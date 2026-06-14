@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import ScrollToTop from './components/ScrollToTop'
 import Footer from './components/Footer'
+import CaraAssistant from './components/CaraAssistant'
 import HeroSlider from './components/HeroSlider'
 import CTASection from './components/CTASection'
 import ServicesGrid from './components/ServicesGrid'
@@ -48,6 +49,7 @@ export default function App() {
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
         <Footer />
+        <CaraAssistant />
       </div>
     </BrowserRouter>
   )

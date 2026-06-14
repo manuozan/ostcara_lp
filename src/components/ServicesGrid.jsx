@@ -3,83 +3,121 @@ import { Link } from 'react-router-dom'
 const SERVICES = [
   {
     id: 1,
-    icon: 'fas fa-heart',
-    title: 'AFILIATE A\nOSTCARA',
-    description: 'La obra social que crece junto a sus afiliados y se preocupa por ellos los 365 días de año.',
+    icon: 'fas fa-user-plus',
+    title: 'Afíliate a Ostcara',
+    description: 'La obra social que crece junto a sus afiliados y se preocupa por ellos los 365 días del año.',
+    label: 'Afiliación',
     to: '/afiliacion',
-    bgColor: 'rgba(62, 198, 245, 0.4)',
+    color: '#3dc2c6',
+    colorLight: '#e8f9fa',
   },
   {
     id: 2,
     icon: 'fas fa-map-marker-alt',
-    title: 'NUESTRAS DELEGACIONES',
-    description: 'Seguimos creciendo y llevando a OSTCARA cerca de cada uno de nuestros afiliados.',
+    title: 'Nuestras Delegaciones',
+    description: 'Seguimos creciendo y llevando Ostcara cada vez más cerca de todos nuestros afiliados.',
+    label: 'Red de oficinas',
     to: '/delegaciones',
-    bgColor: '#dcf3f8',
+    color: '#22a3d6',
+    colorLight: '#e6f4fb',
   },
   {
     id: 3,
-    icon: 'fas fa-user-md',
-    title: 'CARTILLA MÉDICA',
-    description: 'Profesionales de excelencia de todas las áreas de la salud para darte la mejor cobertura.',
+    icon: 'fas fa-stethoscope',
+    title: 'Cartilla Médica',
+    description: 'Profesionales de excelencia en todas las áreas de la salud para brindarte la mejor cobertura.',
+    label: 'Prestadores',
     to: '/cartilla',
-    bgColor: 'rgba(62, 198, 245, 0.2)',
+    color: '#39c9b8',
+    colorLight: '#e7f9f7',
   },
   {
     id: 4,
-    icon: 'fas fa-headset',
-    title: 'COMUNICATE CON NOSOTROS',
-    description: 'En OSTCARA queremos siempre estar comunicados con el afiliado, por eso tenemos EMAIL, Teléfono y ahora WHATSAPP',
+    icon: 'fas fa-comments',
+    title: 'Contactanos',
+    description: 'Estamos disponibles para vos por email, teléfono y WhatsApp. Tu consulta siempre tiene respuesta.',
+    label: 'Atención al afiliado',
     to: '/contacto',
-    bgColor: '#dcf3f8',
+    color: '#2b91c4',
+    colorLight: '#e5f2fa',
   },
 ]
 
-function ServiceCard({ icon, title, description, to, bgColor }) {
+function ServiceCard({ icon, title, description, label, to, color, colorLight }) {
   return (
     <Link
       to={to}
-      className="group block relative overflow-hidden"
-      style={{ backgroundColor: bgColor, height: '340px' }}
+      className="group flex flex-col bg-white relative overflow-hidden transition-all duration-300 hover:-translate-y-1"
+      style={{
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+        borderRadius: '0',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.boxShadow = `0 8px 28px rgba(0,0,0,0.12)`
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)'
+      }}
     >
-      {/* Content */}
-      <div className="flex flex-col items-center justify-center h-full px-6 text-center transition-transform duration-300 group-hover:-translate-y-20">
-        {/* Icon */}
-        <i
-          className={`${icon} text-[70px] mb-4 transition-transform duration-300`}
+      {/* Top accent bar */}
+      <div
+        className="w-full h-1 flex-shrink-0 transition-all duration-300 group-hover:h-[3px]"
+        style={{ backgroundColor: color }}
+      />
+
+      <div className="flex flex-col items-start p-7 flex-1">
+        {/* Label pill */}
+        <span
+          className="inline-block text-[10px] font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-5"
           style={{
-            background: 'linear-gradient(210deg, #39e5d4, #22a3d6)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            lineHeight: '70px',
-            width: '70px',
-            height: '70px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            backgroundColor: colorLight,
+            color: color,
+            fontFamily: "'Open Sans', sans-serif",
+            letterSpacing: '0.1em',
           }}
-        ></i>
+        >
+          {label}
+        </span>
+
+        {/* Icon circle */}
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+          style={{ backgroundColor: colorLight }}
+        >
+          <i
+            className={`${icon} text-xl`}
+            style={{ color }}
+          />
+        </div>
 
         {/* Title */}
         <h3
-          className="text-sm font-bold text-[#444] mt-2 leading-snug whitespace-pre-line"
+          className="text-base font-bold text-gray-800 mb-3 leading-snug"
           style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           {title}
         </h3>
-      </div>
 
-      {/* Description revealed on hover */}
-      <div
-        className="absolute bottom-0 left-0 right-0 px-6 pb-6 text-center opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
-      >
+        {/* Description */}
         <p
-          className="text-xs text-[#444] leading-relaxed"
-          style={{ fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif" }}
+          className="text-sm text-gray-500 leading-relaxed flex-1"
+          style={{ fontFamily: "'Open Sans', sans-serif" }}
         >
           {description}
         </p>
+
+        {/* CTA link */}
+        <div
+          className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 group-hover:gap-3"
+          style={{
+            color,
+            fontFamily: "'Open Sans', sans-serif",
+            letterSpacing: '0.08em',
+          }}
+        >
+          Ver más
+          <i className="fas fa-arrow-right text-[10px] transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
       </div>
     </Link>
   )
@@ -87,13 +125,33 @@ function ServiceCard({ icon, title, description, to, bgColor }) {
 
 export default function ServicesGrid() {
   return (
-    <section className="w-full" style={{ backgroundColor: '#f4f4f4' }}>
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {SERVICES.map((service) => (
-          <ServiceCard key={service.id} {...service} />
-        ))}
+    <section
+      className="w-full py-10 px-4"
+      style={{ backgroundColor: '#f0f8fa' }}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Section heading */}
+        <div className="text-center mb-8">
+          <p
+            className="text-xs font-semibold uppercase tracking-widest mb-2"
+            style={{ color: '#3dc2c6', fontFamily: "'Open Sans', sans-serif", letterSpacing: '0.15em' }}
+          >
+            ¿Qué necesitás?
+          </p>
+          <h2
+            className="text-2xl md:text-3xl font-bold text-gray-800"
+            style={{ fontFamily: "'Open Sans', sans-serif" }}
+          >
+            Estamos para ayudarte
+          </h2>
+        </div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {SERVICES.map((service) => (
+            <ServiceCard key={service.id} {...service} />
+          ))}
+        </div>
       </div>
     </section>
   )
