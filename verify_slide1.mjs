@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+const dir = 'C:/Users/jmozan_dat/Desktop/PROYECTOS/ostcara_landing/screenshots';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+await page.setViewportSize({ width: 1280, height: 600 });
+await page.goto('http://localhost:5175', { waitUntil: 'networkidle' });
+await page.waitForTimeout(1500);
+await page.screenshot({ path: `${dir}/slide1-updated.png` });
+console.log('Done');
+await browser.close();
