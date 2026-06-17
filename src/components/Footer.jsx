@@ -3,229 +3,216 @@ import { Link } from 'react-router-dom'
 const NEWS_ARTICLES = [
   {
     id: 1,
-    category: 'NOVEDADES',
+    category: 'Novedades',
     title: 'Nuevo portal para Afiliados de OSTCARA',
-    excerpt: 'Portal de Afiliados OSTCARA. Accedé de forma rápida y segura a tus autorizaciones, credencial digital, movimientos, aportes y novedades.',
-    href: '/nuevo-portal',
+    excerpt: 'Accedé de forma rápida y segura a tus autorizaciones, credencial digital, movimientos, aportes y novedades.',
+    to: '/nuevo-portal',
   },
   {
     id: 2,
-    category: 'NOVEDADES',
-    title: 'OSTCARA INFORMA – HOSPITAL NAVAL',
+    category: 'Novedades',
+    title: 'OSTCARA INFORMA – Hospital Naval',
     excerpt: 'Información importante para nuestros afiliados sobre la cobertura en Hospital Naval.',
-    href: '/hospital-naval',
+    to: '/hospital-naval',
   },
   {
     id: 3,
-    category: 'NOVEDADES',
+    category: 'Novedades',
     title: 'Ley Nacional 27.610',
-    excerpt: 'Respaldamos el derecho de las personas gestantes a acceder a la IVE de manera SEGURA y Legal.',
-    href: '/ley-nacional',
+    excerpt: 'Respaldamos el derecho de las personas gestantes a acceder a la IVE de manera segura y legal.',
+    to: '/ley-nacional',
   },
   {
     id: 4,
-    category: 'NOVEDADES',
-    title: 'IDENTIDAD DE GÉNERO: Ley 26.743',
-    excerpt: 'En OSTCARA, creemos en la igualdad y el respeto para todas las personas.',
-    href: '/identidad-genero',
+    category: 'Novedades',
+    title: 'Identidad de Género: Ley 26.743',
+    excerpt: 'En OSTCARA creemos en la igualdad y el respeto para todas las personas.',
+    to: '/identidad-genero',
   },
 ]
 
 const CONTACT_ITEMS = [
-  {
-    icon: 'fas fa-map-marker-alt',
-    title: 'Dirección',
-    lines: ['Montevideo 589 7º A - CABA'],
-  },
-  {
-    icon: 'fas fa-mobile-alt',
-    title: 'Teléfono',
-    lines: ['+54 9 11 7172-2501'],
-  },
-  {
-    icon: 'fas fa-envelope-open',
-    title: 'Email',
-    lines: ['secretaria@ostcara.org.ar', 'recepcion@ostcara.org.ar', 'afiliaciones@ostcara.org.ar'],
-  },
+  { icon: 'fas fa-map-marker-alt', text: 'Montevideo 589 7° A — CABA' },
+  { icon: 'fas fa-phone', text: '(011) 4371-7055 · 0800 345 1266' },
+  { icon: 'fab fa-whatsapp', text: '+54 9 11 7172-2501' },
+  { icon: 'fas fa-envelope', text: 'secretaria@ostcara.org.ar' },
+  { icon: 'fas fa-envelope', text: 'recepcion@ostcara.org.ar' },
+  { icon: 'fas fa-envelope', text: 'afiliaciones@ostcara.org.ar' },
 ]
 
-function NewsCard({ category, title, excerpt, href }) {
-  const isInternal = href.startsWith('/')
-  const Wrapper = ({ children }) => isInternal
-    ? <Link to={href} className="block bg-white border border-gray-200 hover:shadow-md transition-shadow duration-200 overflow-hidden">{children}</Link>
-    : <a href={href} className="block bg-white border border-gray-200 hover:shadow-md transition-shadow duration-200 overflow-hidden">{children}</a>
+function NewsCard({ category, title, excerpt, to }) {
   return (
-    <Wrapper>
-      <div className="p-5">
-        <span
-          className="inline-block text-xs font-bold text-white px-2 py-1 mb-3"
-          style={{ backgroundColor: '#3ec6f5' }}
-        >
-          {category}
-        </span>
-        <h4
-          className="text-sm font-bold text-[#444] mb-2 leading-snug hover:text-[#3ec6f5] transition-colors"
-          style={{ fontFamily: "'Open Sans', sans-serif" }}
-        >
-          {title}
-        </h4>
-        <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">{excerpt}</p>
-        <span className="inline-block mt-3 text-xs text-[#3ec6f5] font-semibold">Leer más →</span>
-      </div>
-    </Wrapper>
+    <Link
+      to={to}
+      className="group block bg-white p-5 transition-all duration-200 hover:-translate-y-0.5"
+      style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}
+      onMouseEnter={e => e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.1)'}
+      onMouseLeave={e => e.currentTarget.style.boxShadow = '0 1px 6px rgba(0,0,0,0.06)'}
+    >
+      <span
+        className="inline-block text-[10px] font-bold text-white px-2.5 py-1 mb-3 uppercase tracking-wider"
+        style={{ backgroundColor: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+      >
+        {category}
+      </span>
+      <h4
+        className="text-sm font-bold text-[#2d3a45] mb-2 leading-snug group-hover:text-[#3dc2c6] transition-colors"
+        style={{ fontFamily: "'Nunito', 'Open Sans', sans-serif" }}
+      >
+        {title}
+      </h4>
+      <p className="text-xs text-[#617585] leading-relaxed line-clamp-3" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+        {excerpt}
+      </p>
+      <span className="inline-flex items-center gap-1 mt-3 text-[11px] font-bold text-[#3dc2c6]" style={{ fontFamily: "'Nunito', sans-serif" }}>
+        Leer más <i className="fas fa-arrow-right text-[9px]"></i>
+      </span>
+    </Link>
   )
 }
 
 export default function Footer() {
   return (
     <footer>
-      {/* News section */}
-      <section style={{ backgroundColor: '#f4f4f4' }} className="py-10 px-4">
+      {/* Zone 1 — News */}
+      <section className="py-12 px-4" style={{ backgroundColor: '#f0f8fa' }}>
         <div className="max-w-[1200px] mx-auto">
-          <h2
-            className="text-lg font-bold text-[#444] mb-6 uppercase"
-            style={{ fontFamily: "'Open Sans', sans-serif" }}
-          >
-            NOTICIAS Y RECOMENDACIONES
-            <span className="block text-sm font-normal text-gray-500 mt-1 normal-case">
-              Conoce nuestras últimas noticias y campañas de prevención
-            </span>
-          </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-7">
+            <div>
+              <p
+                className="text-[11px] font-bold uppercase tracking-[0.18em] mb-1"
+                style={{ color: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+              >
+                Noticias
+              </p>
+              <h2
+                className="text-xl font-extrabold text-[#2d3a45]"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+              >
+                Novedades y comunicados
+              </h2>
+            </div>
+            <a
+              href="https://ostcara.com.ar/"
+              className="text-[11px] font-bold text-[#3dc2c6] border border-[#3dc2c6] px-4 py-2 hover:bg-[#3dc2c6] hover:text-white transition-colors shrink-0"
+              style={{ fontFamily: "'Nunito', sans-serif" }}
+            >
+              Ver todas
+            </a>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {NEWS_ARTICLES.map((article) => (
               <NewsCard key={article.id} {...article} />
             ))}
           </div>
-
-          <div className="mt-6 text-center">
-            <a
-              href="https://ostcara.com.ar/"
-              className="inline-block text-sm font-semibold text-[#3ec6f5] border border-[#3ec6f5] px-5 py-2 hover:bg-[#3ec6f5] hover:text-white transition-colors"
-            >
-              Cargar más
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Delegaciones banner */}
-      <section
-        className="relative py-12 px-4 overflow-hidden"
-        style={{ backgroundColor: '#dcf3f8' }}
-      >
-        {/* Faint background image */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "url('https://ostcara.com.ar/wp-content/uploads/2019/12/12971-scaled.jpg')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <div className="relative max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2
-              className="text-2xl md:text-3xl font-bold text-[#444] uppercase mb-2"
-              style={{ fontFamily: "'Open Sans', sans-serif" }}
-            >
-              ENCONTRÁ NUESTRAS DELEGACIONES
-            </h2>
-            <p className="text-[#444] text-sm md:text-base">
-              Siempre una delegación a un paso de distancia — Aprovechá el nuevo mapa interactivo de OSTCARA y buscá tu delegación más cercana, información, calles y mucho más.
-            </p>
-          </div>
-          <a
-            href="https://ostcara.com.ar/delegaciones/"
-            className="shrink-0 inline-block px-8 py-3 font-bold text-white transition-colors duration-200"
-            style={{ backgroundColor: '#3ec6f5' }}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#5ac8fa'}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3ec6f5'}
-          >
-            INGRESAR
-          </a>
-        </div>
-      </section>
+      {/* Zone 2 — Dark comprehensive footer */}
+      <div style={{ backgroundColor: '#1a2e3b' }}>
+        <div className="max-w-[1200px] mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-      {/* Cartilla section */}
-      <section className="py-12 px-4" style={{ backgroundColor: '#fcfcfc' }}>
-        <div className="max-w-[1200px] mx-auto text-center">
-          <h2
-            className="text-2xl font-bold text-[#444] uppercase mb-3"
-            style={{ fontFamily: "'Open Sans', sans-serif" }}
-          >
-            CARTILLA MÉDICA
-          </h2>
-          <p className="text-gray-500 mb-6">
-            Gran cantidad de profesionales de todas las especialidades, sanatorios y clínicas de primer nivel
-          </p>
-          <a
-            href="https://ostcara.com.ar/cartilla-medica/"
-            className="inline-block px-8 py-3 rounded-full border-2 text-sm font-semibold text-gray-400 border-gray-300 hover:text-[#444] hover:border-gray-400 transition-colors duration-200"
-          >
-            VER TODAS LAS ESPECIALIDADES
-          </a>
-        </div>
-      </section>
-
-      {/* Contact info */}
-      <section className="py-10 px-4" style={{ backgroundColor: '#fcfcfc', borderTop: '1px solid #eaeaea' }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {CONTACT_ITEMS.map((item) => (
-              <div key={item.title} className="flex items-start gap-4">
-                <i
-                  className={`${item.icon} text-2xl mt-1`}
-                  style={{ color: '#1db4c1' }}
-                ></i>
-                <div>
-                  <h4
-                    className="font-bold text-[#444] text-sm mb-1"
-                    style={{ fontFamily: "'Open Sans', sans-serif" }}
-                  >
-                    {item.title}
-                  </h4>
-                  {item.lines.map((line, i) => (
-                    <p key={i} className="text-xs text-gray-500">{line}</p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Social + logo */}
-          <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between gap-4">
-            <a href="https://ostcara.com.ar/" title="OSTCARA">
+            {/* Column 1 — Brand */}
+            <div>
               <img
                 src="https://ostcara.com.ar/wp-content/uploads/2019/12/logo.svg"
                 alt="OSTCARA"
-                width="160"
+                width="130"
+                style={{ filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+                className="mb-4"
               />
-            </a>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://www.facebook.com/ObraSocialOSTCARA/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#3ec6f5] transition-colors"
+              <p
+                className="text-sm text-white/55 leading-relaxed mb-5"
+                style={{ fontFamily: "'Open Sans', sans-serif" }}
               >
-                <i className="fab fa-facebook-f text-xl"></i>
-              </a>
-              <a
-                href="https://twitter.com/ostcara"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-[#3ec6f5] transition-colors"
-              >
-                <i className="fab fa-twitter text-xl"></i>
-              </a>
+                Obra Social de los Trabajadores de la Carne y Afines de la República Argentina. Una salud comprometida con vos.
+              </p>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.facebook.com/ObraSocialOSTCARA/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'}
+                >
+                  <i className="fab fa-facebook-f text-white text-xs"></i>
+                </a>
+                <a
+                  href="https://twitter.com/ostcara"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.08)'}
+                >
+                  <i className="fab fa-twitter text-white text-xs"></i>
+                </a>
+                <a
+                  href="https://afiliados.ostcara.org.ar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 inline-flex items-center gap-1.5 text-[11px] font-bold text-white px-3 py-1.5 transition-colors duration-200"
+                  style={{ backgroundColor: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = '#2ba5a9'}
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
+                >
+                  <i className="fas fa-user-circle text-xs"></i>
+                  Portal
+                </a>
+              </div>
             </div>
-            <p className="text-xs text-gray-400 text-center md:text-right">
-              © OSTCARA · Obra Social de los Trabajadores de la Carne y Afines de la República Argentina
+
+            {/* Column 2 — Contact */}
+            <div>
+              <h4
+                className="text-xs font-bold text-white/40 uppercase tracking-[0.18em] mb-5"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+              >
+                Contacto
+              </h4>
+              <ul className="space-y-3">
+                {CONTACT_ITEMS.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <i
+                      className={`${item.icon} text-xs mt-1 shrink-0`}
+                      style={{ color: '#3dc2c6', width: '14px', textAlign: 'center' }}
+                    ></i>
+                    <span
+                      className="text-sm text-white/55 leading-snug"
+                      style={{ fontFamily: "'Open Sans', sans-serif" }}
+                    >
+                      {item.text}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright bar */}
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p
+              className="text-[11px] text-white/30"
+              style={{ fontFamily: "'Open Sans', sans-serif" }}
+            >
+              © {new Date().getFullYear()} OSTCARA · Todos los derechos reservados
+            </p>
+            <p
+              className="text-[11px] text-white/25"
+              style={{ fontFamily: "'Open Sans', sans-serif" }}
+            >
+              Obra Social de los Trabajadores de la Carne y Afines de la R.A.
             </p>
           </div>
         </div>
-      </section>
+      </div>
     </footer>
   )
 }

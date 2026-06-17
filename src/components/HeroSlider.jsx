@@ -1,42 +1,46 @@
 import banner1 from '../assets/banner1.png'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, EffectFade } from 'swiper/modules'
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 import 'swiper/css/effect-fade'
 
 const SLIDES = [
   {
     id: 1,
-    bg: '#f4f4f4',
+    bg: '#eef6f7',
     bgImage: banner1,
     titleLines: ['PRESTADORES', 'VIGENTES'],
     subtitle: null,
-    buttonText: 'VER LISTADO',
+    buttonText: 'Ver listado',
     buttonTo: '/cartilla',
-    textColor: '#303030',
+    textColor: '#2d3a45',
+    fadeColor: '238,246,247',
   },
   {
     id: 2,
-    bg: '#f4f4f4',
+    bg: '#f0f4f8',
     bgImage: 'https://ostcara.com.ar/wp-content/uploads/2019/12/SLIDE1-OST.jpg',
     titleLines: ['AFILIATE A', 'OSTCARA'],
     subtitle: 'Una obra social pensada para vos',
-    buttonText: 'REQUISITOS',
+    buttonText: 'Ver requisitos',
     buttonTo: '/afiliacion',
     to: '/afiliacion',
-    textColor: '#303030',
+    textColor: '#2d3a45',
+    fadeColor: '240,244,248',
   },
   {
     id: 3,
-    bg: '#f4f4f4',
+    bg: '#eef6f7',
     bgImage: 'https://ostcara.com.ar/wp-content/uploads/2019/12/SLIDE2-OST.jpg',
     titleLines: ['ENCONTRÁ TU', 'DELEGACIÓN', 'MÁS CERCANA'],
-    subtitle: 'OSTCARA está siempre cerca',
-    buttonText: 'DELEGACIONES',
+    subtitle: 'OSTCARA está siempre cerca tuyo',
+    buttonText: 'Ver delegaciones',
     buttonTo: '/delegaciones',
-    textColor: '#303030',
+    textColor: '#2d3a45',
+    fadeColor: '238,246,247',
   },
 ]
 
@@ -50,88 +54,133 @@ export default function HeroSlider() {
     <div className="w-full hero-slider-container">
       <style>{`
         .hero-slider-container .swiper-pagination-bullet {
-          background: #3ec6f5;
-          opacity: 0.5;
-          width: 10px;
-          height: 10px;
+          background: #3dc2c6;
+          opacity: 0.45;
+          width: 8px;
+          height: 8px;
         }
         .hero-slider-container .swiper-pagination-bullet-active {
-          background: #3ec6f5;
+          background: #3dc2c6;
           opacity: 1;
+          width: 24px;
+          border-radius: 4px;
+          transition: width 0.3s ease;
         }
         .swiper-slide-bg {
           background-size: cover;
-          background-position: center;
+          background-position: center center;
           background-repeat: no-repeat;
+        }
+        .hero-slider-container .swiper-button-prev,
+        .hero-slider-container .swiper-button-next {
+          width: 40px;
+          height: 40px;
+          background: rgba(255,255,255,0.82);
+          border-radius: 50%;
+          color: #9ca3af;
+          transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+          top: 50%;
+          transform: translateY(-50%);
+          margin-top: 0;
+        }
+        .hero-slider-container .swiper-button-prev,
+        .hero-slider-container .swiper-button-next { display: none; }
+        @media (min-width: 768px) {
+          .hero-slider-container .swiper-button-prev,
+          .hero-slider-container .swiper-button-next { display: flex; }
+          .hero-slider-container .swiper-button-prev { left: 32px; }
+          .hero-slider-container .swiper-button-next { right: 32px; }
+        }
+        .hero-slider-container .swiper-button-prev:hover,
+        .hero-slider-container .swiper-button-next:hover {
+          background: #ffffff;
+          color: #3dc2c6;
+          transform: translateY(-50%) scale(1.07);
+          box-shadow: 0 4px 18px rgba(61,194,198,0.25);
+        }
+        .hero-slider-container .swiper-button-prev::after,
+        .hero-slider-container .swiper-button-next::after {
+          font-size: 11px;
+          font-weight: 900;
+        }
+        .hero-slider-container .swiper-button-prev svg,
+        .hero-slider-container .swiper-button-next svg {
+          width: 14px;
+          height: auto;
         }
       `}</style>
 
       <Swiper
-        modules={[Autoplay, Pagination, EffectFade]}
+        modules={[Autoplay, Pagination, Navigation, EffectFade]}
         effect="fade"
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
+        navigation
         loop
         className="w-full"
-        style={{ height: 'clamp(300px, 60vw, 550px)' }}
+        style={{ height: 'clamp(300px, 55vw, 700px)' }}
       >
         {SLIDES.map((slide) => (
           <SwiperSlide key={slide.id}>
             <SlideWrapper to={slide.to}>
-            <div
-              className={`swiper-slide-bg w-full h-full flex items-center relative${slide.to ? ' cursor-pointer' : ''}`}
-              style={{
-                backgroundColor: slide.bg,
-                backgroundImage: slide.bgImage ? `url('${slide.bgImage}')` : 'none',
-              }}
-            >
-              {/* Overlay for slides with background images */}
-              {slide.bgImage && (
-                <div className="absolute inset-0 bg-white/30" />
-              )}
+              <div
+                className={`swiper-slide-bg w-full h-full flex flex-col justify-end relative overflow-hidden${slide.to ? ' cursor-pointer' : ''}`}
+                style={{
+                  backgroundColor: slide.bg,
+                  backgroundImage: slide.bgImage ? `url('${slide.bgImage}')` : 'none',
+                }}
+              >
+                {/* Gradient fade: image visible top, fades to bg color bottom */}
+                {slide.bgImage && (
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: `linear-gradient(
+                        to bottom,
+                        rgba(${slide.fadeColor}, 0) 0%,
+                        rgba(${slide.fadeColor}, 0.15) 35%,
+                        rgba(${slide.fadeColor}, 0.82) 68%,
+                        rgba(${slide.fadeColor}, 0.97) 85%
+                      )`,
+                    }}
+                  />
+                )}
 
-              {/* Content */}
-              <div className="relative z-10 max-w-[1200px] w-full mx-auto px-8 md:px-16">
-                <div className="max-w-sm md:max-w-md">
-                  <div className="flex items-center gap-5 mb-3">
+                {/* Content sits in the clean faded area at bottom */}
+                <div className="relative z-10 max-w-[1200px] w-full mx-auto px-8 md:px-16 pb-10 md:pb-14">
+                  <div className="max-w-sm md:max-w-lg">
                     <h2
-                      className="text-4xl md:text-5xl font-bold leading-tight m-0"
-                      style={{ color: slide.textColor, fontFamily: 'Montserrat, Arial, sans-serif' }}
+                      className="text-3xl md:text-5xl font-bold leading-tight mb-3"
+                      style={{ color: slide.textColor, fontFamily: "'Nunito', Montserrat, Arial, sans-serif" }}
                     >
                       {slide.titleLines.map((line, i) => (
                         <span key={i} className="block">{line}</span>
                       ))}
                     </h2>
-                    {slide.showLogo && (
-                      <img
-                        src="https://ostcara.com.ar/wp-content/uploads/2019/12/logo.svg"
-                        alt="OSTCARA"
-                        className="w-24 md:w-32 shrink-0"
-                      />
+
+                    {slide.subtitle && (
+                      <p
+                        className="text-sm md:text-base mb-5 opacity-75"
+                        style={{ color: slide.textColor, fontFamily: "'Open Sans', sans-serif" }}
+                      >
+                        {slide.subtitle}
+                      </p>
                     )}
-                  </div>
 
-                  {slide.subtitle && (
-                    <p
-                      className="text-base md:text-lg mb-5"
-                      style={{ color: slide.textColor }}
+                    <Link
+                      to={slide.buttonTo}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 group"
+                      style={{ backgroundColor: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+                      onMouseEnter={e => e.currentTarget.style.backgroundColor = '#2ba5a9'}
+                      onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
                     >
-                      {slide.subtitle}
-                    </p>
-                  )}
-
-                  <Link
-                    to={slide.buttonTo}
-                    className="inline-block px-5 py-3 text-sm font-bold text-white transition-colors duration-200"
-                    style={{ backgroundColor: '#3ec6f5' }}
-                    onMouseEnter={e => e.currentTarget.style.backgroundColor = '#5ac8fa'}
-                    onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3ec6f5'}
-                  >
-                    {slide.buttonText}
-                  </Link>
+                      {slide.buttonText}
+                      <i className="fas fa-arrow-right text-[10px] transition-transform duration-200 group-hover:translate-x-1"></i>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
             </SlideWrapper>
           </SwiperSlide>
         ))}

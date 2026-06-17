@@ -1,19 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #3ec6f5;
-  --color-primary-dark: #5ac8fa;
-  --color-secondary: #3dc2c6;
-  --color-card-cyan: rgba(62, 198, 245, 0.4);
-  --color-card-light-blue: #dcf3f8;
-  --color-text-dark: #444444;
-  --color-text-body: #303030;
-  --color-icon-from: #39e5d4;
-  --color-icon-to: #22a3d6;
+  --color-brand: #3dc2c6;
+  --color-brand-dark: #2ba5a9;
+  --color-brand-blue: #2b91c4;
+  --color-brand-light: #e6f7f8;
+  --color-text: #2d3a45;
+  --color-text-muted: #617585;
+  --color-bg-soft: #f6fbfc;
 
-  --font-sans: 'Open Sans', Helvetica, Arial, sans-serif;
-  --font-display: 'Questrial', sans-serif;
-  --font-body: 'Open Sans', sans-serif;
+  /* legacy aliases kept for existing inline styles */
+  --color-primary: #3ec6f5;
+  --color-secondary: #3dc2c6;
+  --color-text-dark: #2d3a45;
+  --color-card-light-blue: #dcf3f8;
+
+  --font-heading: 'Nunito', 'Open Sans', sans-serif;
+  --font-body: 'Open Sans', Helvetica, Arial, sans-serif;
 
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1019px;
@@ -26,9 +29,13 @@
 body {
   margin: 0;
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-  color: #444444;
+  color: #2d3a45;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', 'Open Sans', sans-serif;
 }
 
 #root {
@@ -43,4 +50,18 @@ a {
 
 img {
   max-width: 100%;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.5s ease both;
 }

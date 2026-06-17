@@ -13,70 +13,68 @@ function distanciaKm(lat1, lng1, lat2, lng2) {
 
 function PrestadorCard({ prestador, distancia }) {
   return (
-    <div className="border border-gray-200 bg-white p-4 hover:border-[#3ec6f5] transition-colors">
+    <div
+      className="bg-white border border-gray-100 p-4 hover:border-[#3dc2c6] transition-colors group"
+      style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}
+    >
       <div className="flex items-start justify-between gap-3">
-        <div className="flex-1">
-          <h4 className="font-bold text-[#444] text-sm mb-1">{prestador.nombre}</h4>
+        <div className="flex-1 min-w-0">
+          <h4
+            className="font-bold text-[#2d3a45] text-sm mb-1.5 leading-snug"
+            style={{ fontFamily: "'Nunito', 'Open Sans', sans-serif" }}
+          >
+            {prestador.nombre}
+          </h4>
           <span
-            className="inline-block text-xs text-white px-2 py-0.5 mb-2"
-            style={{ backgroundColor: '#3ec6f5' }}
+            className="inline-block text-[10px] font-bold text-white px-2 py-0.5 mb-2 uppercase tracking-wide"
+            style={{ backgroundColor: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
           >
             {prestador.especialidad}
           </span>
-          <p className="text-xs text-gray-500 flex items-center gap-1">
-            <i className="fas fa-map-marker-alt text-[#3ec6f5]"></i>
+          <p className="text-xs text-[#617585] flex items-center gap-1.5 mt-1">
+            <i className="fas fa-map-marker-alt text-[#3dc2c6] shrink-0 text-[10px]"></i>
             {prestador.direccion}
           </p>
-          <p className="text-xs text-gray-500 flex items-center gap-1 mt-1">
-            <i className="fas fa-phone text-[#3ec6f5]"></i>
+          <p className="text-xs text-[#617585] flex items-center gap-1.5 mt-1">
+            <i className="fas fa-phone text-[#3dc2c6] shrink-0 text-[10px]"></i>
             {prestador.telefono}
           </p>
         </div>
         {distancia != null && (
-          <div className="text-right shrink-0">
-            <span className="text-xs font-bold text-[#3ec6f5]">{distancia.toFixed(1)} km</span>
+          <div className="shrink-0 text-right">
+            <span
+              className="text-sm font-bold"
+              style={{ color: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+            >
+              {distancia.toFixed(1)} km
+            </span>
           </div>
         )}
       </div>
-      <div className="mt-3">
+      <div className="mt-3 pt-3 border-t border-gray-50">
         <a
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(prestador.direccion)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs text-[#3ec6f5] hover:underline"
+          className="text-xs font-semibold text-[#3dc2c6] hover:text-[#2ba5a9] transition-colors flex items-center gap-1"
+          style={{ fontFamily: "'Nunito', sans-serif" }}
         >
-          <i className="fas fa-map mr-1"></i>Ver en mapa
+          <i className="fas fa-map text-[10px]"></i>
+          Ver en mapa
         </a>
       </div>
     </div>
   )
 }
 
-function TabBtn({ active, onClick, children }) {
-  return (
-    <button
-      onClick={onClick}
-      className={`px-5 py-2 text-sm font-semibold border-b-2 transition-colors ${
-        active
-          ? 'border-[#3ec6f5] text-[#3ec6f5]'
-          : 'border-transparent text-gray-500 hover:text-[#3ec6f5]'
-      }`}
-    >
-      {children}
-    </button>
-  )
-}
+const SELECT_CLASS = 'flex-1 border border-gray-200 px-3 py-2.5 text-sm text-[#2d3a45] bg-white focus:outline-none focus:border-[#3dc2c6] focus:ring-1 focus:ring-[#3dc2c6] transition-colors'
 
 export default function BuscadorPrestadores() {
   const [tab, setTab] = useState('especialidad')
-
-  // Por especialidad
   const [especialidad, setEspecialidad] = useState('')
   const [localidad, setLocalidad] = useState('')
   const [resultados, setResultados] = useState(null)
-
-  // Por geolocalización
-  const [geoStatus, setGeoStatus] = useState('idle') // idle | loading | success | error
+  const [geoStatus, setGeoStatus] = useState('idle')
   const [geoResultados, setGeoResultados] = useState(null)
   const [geoRadius, setGeoRadius] = useState(10)
 
@@ -91,10 +89,7 @@ export default function BuscadorPrestadores() {
   }
 
   function buscarPorGeolocalizacion() {
-    if (!navigator.geolocation) {
-      setGeoStatus('error')
-      return
-    }
+    if (!navigator.geolocation) { setGeoStatus('error'); return }
     setGeoStatus('loading')
     navigator.geolocation.getCurrentPosition(
       (pos) => {
@@ -112,22 +107,45 @@ export default function BuscadorPrestadores() {
 
   return (
     <div>
-      <h2
-        className="text-base font-bold text-[#444] uppercase tracking-wide mb-5"
-        style={{ fontFamily: "'Open Sans', sans-serif" }}
-      >
-        <i className="fas fa-search text-[#3ec6f5] mr-2"></i>
-        Buscador de Prestadores
-      </h2>
+      <div className="flex items-center gap-3 mb-6">
+        <div
+          className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+          style={{ backgroundColor: '#e6f7f8' }}
+        >
+          <i className="fas fa-search text-sm" style={{ color: '#3dc2c6' }}></i>
+        </div>
+        <h2
+          className="text-lg font-extrabold text-[#2d3a45]"
+          style={{ fontFamily: "'Nunito', 'Open Sans', sans-serif" }}
+        >
+          Buscador de Prestadores
+        </h2>
+      </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 mb-6">
-        <TabBtn active={tab === 'especialidad'} onClick={() => { setTab('especialidad'); setResultados(null) }}>
-          <i className="fas fa-stethoscope mr-2"></i>Por Especialidad
-        </TabBtn>
-        <TabBtn active={tab === 'geo'} onClick={() => { setTab('geo'); setGeoResultados(null); setGeoStatus('idle') }}>
-          <i className="fas fa-location-arrow mr-2"></i>Por Geolocalización
-        </TabBtn>
+      <div className="flex border-b-2 border-gray-100 mb-6">
+        {[
+          { key: 'especialidad', icon: 'fas fa-stethoscope', label: 'Por Especialidad' },
+          { key: 'geo', icon: 'fas fa-location-arrow', label: 'Por Geolocalización' },
+        ].map(({ key, icon, label }) => (
+          <button
+            key={key}
+            onClick={() => {
+              setTab(key)
+              if (key === 'especialidad') setResultados(null)
+              else { setGeoResultados(null); setGeoStatus('idle') }
+            }}
+            className="flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 -mb-[2px] transition-colors"
+            style={{
+              fontFamily: "'Nunito', 'Open Sans', sans-serif",
+              color: tab === key ? '#3dc2c6' : '#617585',
+              borderBottomColor: tab === key ? '#3dc2c6' : 'transparent',
+            }}
+          >
+            <i className={`${icon} text-xs`}></i>
+            {label}
+          </button>
+        ))}
       </div>
 
       {/* Tab: Especialidad */}
@@ -137,7 +155,8 @@ export default function BuscadorPrestadores() {
             <select
               value={especialidad}
               onChange={e => setEspecialidad(e.target.value)}
-              className="flex-1 border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-[#3ec6f5]"
+              className={SELECT_CLASS}
+              style={{ fontFamily: "'Open Sans', sans-serif" }}
             >
               <option value="">Todas las especialidades</option>
               {ESPECIALIDADES.map(e => <option key={e} value={e}>{e}</option>)}
@@ -146,7 +165,8 @@ export default function BuscadorPrestadores() {
             <select
               value={localidad}
               onChange={e => setLocalidad(e.target.value)}
-              className="flex-1 border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-[#3ec6f5]"
+              className={SELECT_CLASS}
+              style={{ fontFamily: "'Open Sans', sans-serif" }}
             >
               <option value="">Todas las localidades</option>
               {LOCALIDADES.map(l => <option key={l} value={l}>{l}</option>)}
@@ -154,22 +174,33 @@ export default function BuscadorPrestadores() {
 
             <button
               type="submit"
-              className="px-6 py-2 text-sm font-bold text-white shrink-0 transition-colors"
-              style={{ backgroundColor: '#3ec6f5' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#5ac8fa'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3ec6f5'}
+              className="px-6 py-2.5 text-sm font-bold text-white shrink-0 transition-colors"
+              style={{
+                backgroundColor: '#3dc2c6',
+                fontFamily: "'Nunito', sans-serif",
+              }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#2ba5a9'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
             >
-              BUSCAR
+              Buscar
             </button>
           </form>
 
           {resultados !== null && (
             <div>
-              <p className="text-xs text-gray-500 mb-4">
+              <p
+                className="text-xs font-semibold text-[#617585] mb-4"
+                style={{ fontFamily: "'Open Sans', sans-serif" }}
+              >
                 {resultados.length} prestador{resultados.length !== 1 ? 'es' : ''} encontrado{resultados.length !== 1 ? 's' : ''}
               </p>
               {resultados.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center py-8">No se encontraron prestadores para los filtros seleccionados.</p>
+                <div className="text-center py-10 bg-gray-50 border border-dashed border-gray-200">
+                  <i className="fas fa-search text-2xl text-gray-300 mb-2 block"></i>
+                  <p className="text-sm text-[#617585]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    No se encontraron prestadores para los filtros seleccionados.
+                  </p>
+                </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {resultados.map(p => <PrestadorCard key={p.id} prestador={p} />)}
@@ -185,11 +216,17 @@ export default function BuscadorPrestadores() {
         <div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
             <div className="flex items-center gap-3">
-              <label className="text-sm text-[#444] whitespace-nowrap">Radio de búsqueda:</label>
+              <label
+                className="text-sm font-semibold text-[#2d3a45] whitespace-nowrap"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+              >
+                Radio:
+              </label>
               <select
                 value={geoRadius}
                 onChange={e => setGeoRadius(Number(e.target.value))}
-                className="border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:border-[#3ec6f5]"
+                className={SELECT_CLASS}
+                style={{ fontFamily: "'Open Sans', sans-serif", flex: 'none', width: 'auto', minWidth: '90px' }}
               >
                 <option value={5}>5 km</option>
                 <option value={10}>10 km</option>
@@ -201,32 +238,44 @@ export default function BuscadorPrestadores() {
             <button
               onClick={buscarPorGeolocalizacion}
               disabled={geoStatus === 'loading'}
-              className="px-6 py-2 text-sm font-bold text-white transition-colors disabled:opacity-60"
-              style={{ backgroundColor: '#3ec6f5' }}
-              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#5ac8fa'}
-              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3ec6f5'}
+              className="inline-flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white transition-colors disabled:opacity-60"
+              style={{
+                backgroundColor: '#3dc2c6',
+                fontFamily: "'Nunito', sans-serif",
+              }}
+              onMouseEnter={e => { if (geoStatus !== 'loading') e.currentTarget.style.backgroundColor = '#2ba5a9' }}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
             >
               {geoStatus === 'loading'
-                ? <><i className="fas fa-spinner fa-spin mr-2"></i>Localizando...</>
-                : <><i className="fas fa-location-arrow mr-2"></i>Usar mi ubicación</>
-              }
+                ? <><i className="fas fa-spinner fa-spin text-xs"></i>Localizando...</>
+                : <><i className="fas fa-location-arrow text-xs"></i>Usar mi ubicación</>}
             </button>
           </div>
 
           {geoStatus === 'error' && (
-            <div className="text-sm text-red-500 bg-red-50 border border-red-200 px-4 py-3 mb-4">
-              <i className="fas fa-exclamation-triangle mr-2"></i>
-              No se pudo obtener tu ubicación. Verificá los permisos del navegador.
+            <div className="flex items-start gap-3 text-sm bg-red-50 border border-red-200 px-4 py-3 mb-4">
+              <i className="fas fa-exclamation-triangle text-red-400 mt-0.5 shrink-0"></i>
+              <span className="text-red-600" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                No se pudo obtener tu ubicación. Verificá los permisos del navegador.
+              </span>
             </div>
           )}
 
           {geoStatus === 'success' && geoResultados !== null && (
             <div>
-              <p className="text-xs text-gray-500 mb-4">
+              <p
+                className="text-xs font-semibold text-[#617585] mb-4"
+                style={{ fontFamily: "'Open Sans', sans-serif" }}
+              >
                 {geoResultados.length} prestador{geoResultados.length !== 1 ? 'es' : ''} dentro de {geoRadius} km
               </p>
               {geoResultados.length === 0 ? (
-                <p className="text-sm text-gray-400 text-center py-8">No se encontraron prestadores en el radio seleccionado.</p>
+                <div className="text-center py-10 bg-gray-50 border border-dashed border-gray-200">
+                  <i className="fas fa-map-marker-alt text-2xl text-gray-300 mb-2 block"></i>
+                  <p className="text-sm text-[#617585]" style={{ fontFamily: "'Open Sans', sans-serif" }}>
+                    No se encontraron prestadores en el radio seleccionado.
+                  </p>
+                </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {geoResultados.map(p => <PrestadorCard key={p.id} prestador={p} distancia={p.distancia} />)}

@@ -334,13 +334,23 @@ export default function CaraAssistant() {
 
   return (
     <>
+      <style>{`
+        .cara-panel {
+          height: calc(100svh - 5.5rem);
+        }
+        @media (min-width: 768px) {
+          .cara-panel {
+            height: min(580px, calc(100vh - 6rem));
+          }
+        }
+      `}</style>
+
       {/* Chat panel */}
       {open && (
         <div
-          className="fixed bottom-20 right-4 z-50 flex flex-col shadow-2xl rounded-2xl overflow-hidden"
+          className="cara-panel fixed bottom-20 right-4 z-50 flex flex-col shadow-2xl rounded-2xl overflow-hidden"
           style={{
             width: 'min(380px, calc(100vw - 2rem))',
-            height: 'min(540px, calc(100vh - 6rem))',
             fontFamily: "'Open Sans', sans-serif",
           }}
         >

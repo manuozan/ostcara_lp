@@ -2,130 +2,189 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 const NAV_ITEMS = [
-  { label: 'INICIO', to: '/' },
-  { label: 'CONÓCENOS', to: '/conocenos' },
-  { label: 'AFILIACIÓN', to: '/afiliacion' },
-  { label: 'DELEGACIONES', to: '/delegaciones' },
-  { label: 'CARTILLA', to: '/cartilla' },
-  { label: 'DISCAPACIDAD', to: '/discapacidad' },
-  { label: 'COSEGUROS', to: '/coseguros' },
-  { label: 'CONTACTO', to: '/contacto' },
+  { label: 'Inicio', to: '/' },
+  { label: 'Conócenos', to: '/conocenos' },
+  { label: 'Afiliación', to: '/afiliacion' },
+  { label: 'Delegaciones', to: '/delegaciones' },
+  { label: 'Cartilla', to: '/cartilla' },
+  { label: 'Discapacidad', to: '/discapacidad' },
+  { label: 'Coseguros', to: '/coseguros' },
+  { label: 'Contacto', to: '/contacto' },
 ]
 
 const LOGO_URL = 'https://ostcara.com.ar/wp-content/uploads/2019/12/logo.svg'
 
-const NAV_LINK_CLASS = 'text-sm font-semibold text-[#444] hover:text-[#3ec6f5] transition-colors duration-200 tracking-wide'
-
-function NavLink({ item, onClick }) {
-  if (item.href) {
-    return (
-      <a href={item.href} target="_blank" rel="noopener noreferrer" className={NAV_LINK_CLASS} onClick={onClick}>
-        {item.label}
-      </a>
-    )
-  }
-  return (
-    <Link to={item.to} className={NAV_LINK_CLASS} onClick={onClick}>
-      {item.label}
-    </Link>
-  )
-}
-
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [sticky, setSticky] = useState(false)
   const location = useLocation()
 
-  useEffect(() => { setMobileMenuOpen(false) }, [location])
+  useEffect(() => { setMobileOpen(false) }, [location])
 
   useEffect(() => {
-    const onScroll = () => setSticky(window.scrollY > 50)
+    const onScroll = () => setSticky(window.scrollY > 44)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  const isActive = (to) =>
+    to === '/' ? location.pathname === '/' : location.pathname.startsWith(to)
+
   return (
-    <header
-      className={`w-full z-50 bg-white transition-shadow duration-300 ${sticky ? 'fixed top-0 left-0 shadow-md' : 'relative'}`}
-    >
-      {/* Desktop header */}
-      <div className="hidden md:block">
-        <div className="max-w-[1200px] mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo */}
-          <a href="https://ostcara.com.ar/" title="OSTCARA">
-            <img src={LOGO_URL} alt="OSTCARA" width="120" />
-          </a>
+    <header className={`w-full z-50 ${sticky ? 'fixed top-0 left-0' : 'relative'}`}>
 
-          {/* Nav */}
-          <nav className="flex items-center gap-6">
-            <ul className="flex items-center gap-6 list-none m-0 p-0">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.label}>
-                  <NavLink item={item} />
-                </li>
-              ))}
-            </ul>
-
-            {/* Social icons */}
-            <div className="flex items-center gap-3 ml-4">
+      {/* Top info bar — hidden when sticky */}
+      {!sticky && (
+        <div className="hidden md:block" style={{ backgroundColor: '#1e2d3a' }}>
+          <div className="max-w-[1200px] mx-auto px-6 py-2 flex items-center justify-between">
+            <div className="flex items-center gap-6">
+              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
+                <i className="fas fa-phone text-[#3dc2c6] text-[10px]"></i>
+                (011) 4371-7055 · 0800 345 1266
+              </span>
+              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
+                <i className="fab fa-whatsapp text-[#3dc2c6] text-[10px]"></i>
+                +54 9 11 7172-2501
+              </span>
+              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
+                <i className="fas fa-envelope text-[#3dc2c6] text-[10px]"></i>
+                secretaria@ostcara.org.ar
+              </span>
+            </div>
+            <div className="flex items-center gap-3">
               <a
                 href="https://www.facebook.com/ObraSocialOSTCARA/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#444] hover:text-[#3ec6f5] transition-colors"
+                className="text-white/40 hover:text-white transition-colors"
               >
-                <i className="fab fa-facebook-f text-base"></i>
+                <i className="fab fa-facebook-f text-[11px]"></i>
               </a>
               <a
                 href="https://twitter.com/ostcara"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#444] hover:text-[#3ec6f5] transition-colors"
+                className="text-white/40 hover:text-white transition-colors"
               >
-                <i className="fab fa-twitter text-base"></i>
+                <i className="fab fa-twitter text-[11px]"></i>
               </a>
             </div>
-          </nav>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Mobile header */}
-      <div className="md:hidden">
-        <div className="px-4 py-3 flex items-center justify-between bg-white shadow-sm">
-          <a href="https://ostcara.com.ar/" title="OSTCARA">
-            <img src={LOGO_URL} alt="OSTCARA" width="90" />
-          </a>
-          <button
-            className="text-[#444] focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Menú"
-          >
-            <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
-          </button>
-        </div>
+      {/* Main nav bar */}
+      <div
+        className="bg-white transition-shadow duration-300"
+        style={{ boxShadow: sticky ? '0 2px 16px rgba(0,0,0,0.09)' : '0 1px 0 rgba(0,0,0,0.07)' }}
+      >
+        {/* Desktop */}
+        <div className="hidden md:flex max-w-[1200px] mx-auto px-6 items-center justify-between h-16">
+          <Link to="/" title="OSTCARA" className="shrink-0">
+            <img src={LOGO_URL} alt="OSTCARA" width="105" />
+          </Link>
 
-        {/* Mobile dropdown menu */}
-        {mobileMenuOpen && (
-          <nav className="bg-white border-t border-gray-200 shadow-lg">
-            <ul className="list-none m-0 p-0">
-              {NAV_ITEMS.map((item) => (
-                <li key={item.label} className="border-b border-gray-100 last:border-0">
-                  <div className="block px-5 py-3 hover:bg-gray-50">
-                    <NavLink item={item} onClick={() => setMobileMenuOpen(false)} />
-                  </div>
-                </li>
-              ))}
-              <li className="flex gap-4 px-5 py-4 border-t border-gray-100">
-                <a href="https://www.facebook.com/ObraSocialOSTCARA/" target="_blank" rel="noopener noreferrer" className="text-[#444] hover:text-[#3ec6f5]">
-                  <i className="fab fa-facebook-f text-lg"></i>
-                </a>
-                <a href="https://twitter.com/ostcara" target="_blank" rel="noopener noreferrer" className="text-[#444] hover:text-[#3ec6f5]">
-                  <i className="fab fa-twitter text-lg"></i>
-                </a>
-              </li>
+          <nav>
+            <ul className="flex items-center list-none m-0 p-0 h-16">
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item.to)
+                return (
+                  <li key={item.label} className="h-full flex items-center">
+                    <Link
+                      to={item.to}
+                      className="h-full flex items-center px-3 text-[11px] font-bold uppercase tracking-wider transition-colors duration-200 border-b-2"
+                      style={{
+                        fontFamily: "'Nunito', 'Open Sans', sans-serif",
+                        color: active ? '#3dc2c6' : '#4a5568',
+                        borderBottomColor: active ? '#3dc2c6' : 'transparent',
+                        letterSpacing: '0.07em',
+                      }}
+                      onMouseEnter={e => { if (!active) e.currentTarget.style.color = '#3dc2c6' }}
+                      onMouseLeave={e => { if (!active) e.currentTarget.style.color = '#4a5568' }}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              })}
             </ul>
           </nav>
-        )}
+
+          <a
+            href="https://afiliados.ostcara.org.ar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-2 px-4 py-2 text-[11px] font-bold text-white uppercase tracking-wider transition-all duration-200"
+            style={{
+              backgroundColor: '#3dc2c6',
+              fontFamily: "'Nunito', 'Open Sans', sans-serif",
+              letterSpacing: '0.07em',
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#2ba5a9'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#3dc2c6'}
+          >
+            <i className="fas fa-user-circle text-xs"></i>
+            Portal
+          </a>
+        </div>
+
+        {/* Mobile */}
+        <div className="md:hidden">
+          <div className="px-4 h-14 flex items-center justify-between">
+            <Link to="/" title="OSTCARA">
+              <img src={LOGO_URL} alt="OSTCARA" width="85" />
+            </Link>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://afiliados.ostcara.org.ar"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-bold text-white px-3 py-1.5"
+                style={{ backgroundColor: '#3dc2c6', fontFamily: "'Nunito', sans-serif" }}
+              >
+                Portal
+              </a>
+              <button
+                className="text-[#4a5568] focus:outline-none p-1"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                aria-label="Menú"
+              >
+                <i className={`fas ${mobileOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+              </button>
+            </div>
+          </div>
+
+          {mobileOpen && (
+            <nav className="border-t border-gray-100">
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(item.to)
+                return (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="flex items-center justify-between px-5 py-3.5 border-b border-gray-50 text-sm font-bold"
+                    style={{
+                      fontFamily: "'Nunito', 'Open Sans', sans-serif",
+                      color: active ? '#3dc2c6' : '#4a5568',
+                      backgroundColor: active ? '#f0fbfc' : 'white',
+                    }}
+                  >
+                    {item.label}
+                    <i className={`fas fa-chevron-right text-xs ${active ? 'text-[#3dc2c6]' : 'text-gray-300'}`}></i>
+                  </Link>
+                )
+              })}
+              <div className="flex items-center gap-4 px-5 py-4 bg-gray-50">
+                <a href="https://www.facebook.com/ObraSocialOSTCARA/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3dc2c6] transition-colors">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/ostcara" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#3dc2c6] transition-colors">
+                  <i className="fab fa-twitter"></i>
+                </a>
+              </div>
+            </nav>
+          )}
+        </div>
       </div>
     </header>
   )
