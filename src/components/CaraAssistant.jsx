@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
+import caraImg from '../assets/cara.png'
 
 // ── Knowledge base ─────────────────────────────────────────────────────────────
 
 const FLOWS = {
   welcome: {
     messages: [
-      '¡Hola! Soy **CARA**, tu asistente de OSTCARA. 👋',
+      '¡Hola! Soy **BOTSCARA**, tu asistente de OSTCARA. 👋',
       '¿En qué puedo ayudarte hoy?',
     ],
     options: [
@@ -271,8 +272,17 @@ export default function CaraAssistant() {
   const [history, setHistory] = useState([])
   const [messages, setMessages] = useState([])
   const [typing, setTyping] = useState(false)
+  const [showTeaser, setShowTeaser] = useState(false)
   const bottomRef = useRef(null)
   const initialized = useRef(false)
+
+  // Show a proactive greeting bubble after a while on the page
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!open) setShowTeaser(true)
+    }, 8000)
+    return () => clearTimeout(timer)
+  }, [])
 
   // Push messages from a flow with a typing delay
   const playFlow = (flowKey, userLabel = null) => {
@@ -306,6 +316,7 @@ export default function CaraAssistant() {
       initialized.current = true
       playFlow('welcome')
     }
+    if (open) setShowTeaser(false)
   }, [open])
 
   // Scroll to bottom on new messages
@@ -359,11 +370,11 @@ export default function CaraAssistant() {
             className="flex items-center gap-3 px-4 py-3 shrink-0"
             style={{ background: 'linear-gradient(135deg, #3ec6f5 0%, #3dc2c6 100%)' }}
           >
-            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-              <i className="fas fa-robot text-white text-base"></i>
+            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center shrink-0 overflow-hidden">
+              <img src={caraImg} alt="BOTSCARA" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
-              <p className="text-white font-bold text-sm leading-none">CARA</p>
+              <p className="text-white font-bold text-sm leading-none">BOTSCARA</p>
               <p className="text-white/80 text-xs mt-0.5">Asistente OSTCARA</p>
             </div>
             <button
@@ -389,11 +400,8 @@ export default function CaraAssistant() {
                 className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.type === 'bot' && (
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mr-2 mt-0.5"
-                    style={{ background: 'linear-gradient(135deg, #3ec6f5, #3dc2c6)' }}
-                  >
-                    <i className="fas fa-robot text-white text-xs"></i>
+                  <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shrink-0 mr-2 mt-0.5 overflow-hidden">
+                    <img src={caraImg} alt="BOTSCARA" className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div
@@ -478,22 +486,41 @@ export default function CaraAssistant() {
         </div>
       )}
 
+      {/* Proactive teaser bubble */}
+      {showTeaser && !open && (
+        <div
+          className="fixed bottom-7 right-28 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl shadow-lg bg-white"
+          style={{ maxWidth: 220, fontFamily: "'Open Sans', sans-serif" }}
+        >
+          <p className="text-sm text-[#303030] flex-1">¿En qué puedo ayudarte?</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              setShowTeaser(false)
+            }}
+            className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+            aria-label="Cerrar mensaje"
+          >
+            <i className="fas fa-times text-xs"></i>
+          </button>
+        </div>
+      )}
+
       {/* Toggle button */}
       <button
-        onClick={() => setOpen(o => !o)}
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
-        style={{
-          background: open
-            ? '#888'
-            : 'linear-gradient(135deg, #3ec6f5 0%, #3dc2c6 100%)',
-          color: '#fff',
-          fontFamily: "'Open Sans', sans-serif",
+        onClick={() => {
+          setOpen(o => !o)
+          setShowTeaser(false)
         }}
-        aria-label={open ? 'Cerrar CARA' : 'Abrir CARA'}
+        className={`fixed bottom-4 right-4 z-50 flex items-center justify-center rounded-full bg-white shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 ${
+          open ? 'w-12 h-12' : 'w-20 h-20'
+        }`}
+        aria-label={open ? 'Cerrar BOTSCARA' : 'Abrir BOTSCARA'}
       >
-        <i className={`fas ${open ? 'fa-times' : 'fa-comment-dots'} text-lg`}></i>
-        {!open && (
-          <span className="font-bold text-sm tracking-widest">CARA</span>
+        {open ? (
+          <i className="fas fa-times text-lg text-gray-500"></i>
+        ) : (
+          <img src={caraImg} alt="BOTSCARA" className="w-full h-full rounded-full object-cover" />
         )}
       </button>
     </>
