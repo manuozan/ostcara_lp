@@ -32,6 +32,15 @@ body {
   color: #2d3a45;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+  cursor: default;
+}
+
+a, button, select, label[for], [role="button"] {
+  cursor: pointer;
+}
+
+input, textarea {
+  cursor: text;
 }
 
 h1, h2, h3, h4, h5, h6 {
