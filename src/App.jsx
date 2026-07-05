@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import CaraAssistant from './components/CaraAssistant'
 import HeroSlider from './components/HeroSlider'
 import CTASection from './components/CTASection'
+import LlamandoDoctorSection from './components/LlamandoDoctorSection'
 import ServicesGrid from './components/ServicesGrid'
 import Conocenos from './pages/Conocenos'
 import Delegaciones from './pages/Delegaciones'
@@ -23,6 +24,7 @@ function Home() {
     <main className="flex-1">
       <HeroSlider />
       <CTASection />
+      <LlamandoDoctorSection />
       <ServicesGrid />
     </main>
   )
