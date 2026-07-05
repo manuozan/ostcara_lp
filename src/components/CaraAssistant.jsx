@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import caraAvatar from '../assets/cara.png'
 
 // ── Knowledge base ─────────────────────────────────────────────────────────────
 
@@ -18,56 +19,249 @@ const FLOWS = {
 
   // ── AFILIACIÓN ───────────────────────────────────────────────────────────────
   afiliacion_menu: {
-    messages: ['¿Qué necesitás saber sobre la afiliación?'],
+    messages: ['¿Bajo qué tipo de aporte estás afiliado o vas a afiliarte?'],
     options: [
-      { label: 'Documentación titular', next: 'afiliacion_titular' },
-      { label: 'Grupo familiar (cónyuge e hijos)', next: 'afiliacion_grupo' },
-      { label: 'Familiares a cargo', next: 'afiliacion_familiares' },
+      { label: 'Relación de dependencia', next: 'afiliacion_dependencia_menu' },
+      { label: 'Monotributo', next: 'afiliacion_monotributo_tipo' },
+      { label: 'Servicio doméstico', next: 'afiliacion_servicio_domestico_menu' },
       { label: 'Opción de cambio de obra social', next: 'afiliacion_cambio' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'welcome',
   },
 
-  afiliacion_titular: {
-    messages: [
-      '**Documentación para el titular:**',
-      '• DNI del titular\n• Últimos 2 recibos de sueldo (o alta temprana firmada por el empleador)',
-      '📌 *Monotributistas y empleados domésticos:* deben presentar el ticket de pago AFIP actualizado cada mes.',
-      '¿Necesitás más información?',
-    ],
+  afiliacion_monotributo_tipo: {
+    messages: ['¿Sos monotributista **común** o **social**?'],
     options: [
-      { label: 'Ver documentación grupo familiar', next: 'afiliacion_grupo' },
-      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: 'Monotributo común', next: 'afiliacion_monotributo_menu' },
+      { label: 'Monotributo social', next: 'afiliacion_monotributo_social_menu' },
       { label: '← Volver a afiliación', next: 'afiliacion_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'afiliacion_menu',
   },
 
-  afiliacion_grupo: {
+  // Relación de dependencia
+  afiliacion_dependencia_menu: {
+    messages: ['**Relación de dependencia** — ¿para quién necesitás la documentación?'],
+    options: [
+      { label: 'Titular', next: 'afiliacion_dependencia_titular' },
+      { label: 'Cónyuge / Concubina', next: 'afiliacion_dependencia_conyuge' },
+      { label: 'Hijos', next: 'afiliacion_dependencia_hijos' },
+      { label: '← Volver a afiliación', next: 'afiliacion_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_menu',
+  },
+  afiliacion_dependencia_titular: {
     messages: [
-      '**Documentación para cónyuge / concubina e hijos:**',
-      '• DNI de la cónyuge / concubina\n• Certificado de matrimonio o declaración jurada de concubinato\n• DNI de los hijos\n• Partida de nacimiento de los hijos',
+      '**Titular — Relación de dependencia:**',
+      '• Último recibo de sueldo\n• Alta temprana de trabajador (en caso de ser un alta reciente)\n• DNI frente y dorso\n• Certificado de opción de cambio (solo en caso de haberlo realizado)',
+    ],
+    options: [
+      { label: 'Ver Cónyuge / Concubina', next: 'afiliacion_dependencia_conyuge' },
+      { label: 'Ver Hijos', next: 'afiliacion_dependencia_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_dependencia_menu',
+  },
+  afiliacion_dependencia_conyuge: {
+    messages: [
+      '**Cónyuge / Concubina — Relación de dependencia:**',
+      '• Negativa de la ANSES\n• Certificado de matrimonio / concubinato\n• DNI frente y dorso\n• Último recibo de sueldo del titular',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_dependencia_titular' },
+      { label: 'Ver Hijos', next: 'afiliacion_dependencia_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_dependencia_menu',
+  },
+  afiliacion_dependencia_hijos: {
+    messages: [
+      '**Hijos — Relación de dependencia:**',
+      '• Último recibo de sueldo del titular\n• Constancia de CUIL\n• DNI frente y dorso\n• Partida de nacimiento',
       '📌 Los hijos solteros mayores de 21 años tienen cobertura hasta los 25 años presentando certificado de alumno regular.',
-      '📌 Para monotributistas, la incorporación del grupo familiar requiere un aporte adicional vía AFIP.',
     ],
     options: [
-      { label: 'Ver documentación familiares a cargo', next: 'afiliacion_familiares' },
+      { label: 'Ver Titular', next: 'afiliacion_dependencia_titular' },
       { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_dependencia_menu',
+  },
+
+  // Monotributo
+  afiliacion_monotributo_menu: {
+    messages: [
+      '**Monotributo** — ¿para quién necesitás la documentación?',
+      '📌 Deberás presentar todos los meses el ticket de pago AFIP actualizado. Para incorporar grupo familiar primario, debés abonar un importe adicional vía AFIP.',
+    ],
+    options: [
+      { label: 'Titular', next: 'afiliacion_monotributo_titular' },
+      { label: 'Cónyuge / Concubina', next: 'afiliacion_monotributo_conyuge' },
+      { label: 'Hijos', next: 'afiliacion_monotributo_hijos' },
+      { label: '← Volver', next: 'afiliacion_monotributo_tipo' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_tipo',
+  },
+  afiliacion_monotributo_titular: {
+    messages: [
+      '**Titular — Monotributo:**',
+      '• F184 ARCA\n• F152 (credencial de pago de monotributo)\n• DNI frente y dorso\n• Últimos 3 pagos\n• Certificado de opción de cambio SSSalud (solo si se realizó)',
+    ],
+    options: [
+      { label: 'Ver Cónyuge / Concubina', next: 'afiliacion_monotributo_conyuge' },
+      { label: 'Ver Hijos', next: 'afiliacion_monotributo_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_menu',
+  },
+  afiliacion_monotributo_conyuge: {
+    messages: [
+      '**Cónyuge / Concubina — Monotributo:**',
+      '• Negativa de la ANSES\n• F184 ARCA (actualizado con adherentes)\n• F152 (actualizado con el valor del adherente)\n• DNI frente y dorso\n• Certificado de matrimonio / concubinato\n• Último pago (con el adherente)',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_monotributo_titular' },
+      { label: 'Ver Hijos', next: 'afiliacion_monotributo_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_menu',
+  },
+  afiliacion_monotributo_hijos: {
+    messages: [
+      '**Hijos — Monotributo:**',
+      '• F184 ARCA (actualizado con adherentes)\n• F152 (actualizado con el valor del adherente)\n• DNI frente y dorso\n• Constancia de CUIL\n• Partida de nacimiento\n• Último pago (con el adherente)\n• CUD actualizado',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_monotributo_titular' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_menu',
+  },
+
+  // Monotributo social
+  afiliacion_monotributo_social_menu: {
+    messages: ['**Monotributo social** — ¿para quién necesitás la documentación?'],
+    options: [
+      { label: 'Titular', next: 'afiliacion_monotributo_social_titular' },
+      { label: 'Cónyuge / Concubina', next: 'afiliacion_monotributo_social_conyuge' },
+      { label: 'Hijos', next: 'afiliacion_monotributo_social_hijos' },
+      { label: '← Volver', next: 'afiliacion_monotributo_tipo' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_tipo',
+  },
+  afiliacion_monotributo_social_titular: {
+    messages: [
+      '**Titular — Monotributo social:**',
+      '• Certificado de elección de obra social (ANSES)\n• F152 (credencial de pago de monotributo)\n• DNI frente y dorso\n• Últimos 3 pagos\n• Certificado de opción de cambio (solo en caso de haberlo realizado)',
+    ],
+    options: [
+      { label: 'Ver Cónyuge / Concubina', next: 'afiliacion_monotributo_social_conyuge' },
+      { label: 'Ver Hijos', next: 'afiliacion_monotributo_social_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_social_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_social_menu',
+  },
+  afiliacion_monotributo_social_conyuge: {
+    messages: [
+      '**Cónyuge / Concubina — Monotributo social:**',
+      '• Negativa de la ANSES\n• Certificado elección obra social (ANSES - adherente actualizado)\n• F152 (con el valor del adherente actualizado)\n• DNI frente y dorso\n• Certificado de matrimonio / concubinato\n• Último pago (con adherente)',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_monotributo_social_titular' },
+      { label: 'Ver Hijos', next: 'afiliacion_monotributo_social_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_social_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_social_menu',
+  },
+  afiliacion_monotributo_social_hijos: {
+    messages: [
+      '**Hijos — Monotributo social:**',
+      '• Certificado elección obra social (ANSES - adherente actualizado)\n• F152 (con el valor del adherente actualizado)\n• DNI frente y dorso\n• Partida de nacimiento\n• Constancia de CUIL\n• Último pago (con adherente)\n• CUD actualizado',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_monotributo_social_titular' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_monotributo_social_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_monotributo_social_menu',
+  },
+
+  // Servicio doméstico
+  afiliacion_servicio_domestico_menu: {
+    messages: [
+      '**Servicio doméstico** — ¿para quién necesitás la documentación?',
+      '📌 Deberás presentar todos los meses el ticket de pago AFIP actualizado.',
+    ],
+    options: [
+      { label: 'Titular', next: 'afiliacion_servicio_domestico_titular' },
+      { label: 'Cónyuge / Concubina', next: 'afiliacion_servicio_domestico_conyuge' },
+      { label: 'Hijos', next: 'afiliacion_servicio_domestico_hijos' },
       { label: '← Volver a afiliación', next: 'afiliacion_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'afiliacion_menu',
   },
-
-  afiliacion_familiares: {
+  afiliacion_servicio_domestico_titular: {
     messages: [
-      '**Familiares a cargo** (padres mayores de 60 años o nietos):',
-      '• DNI\n• Partida de nacimiento\n• Documento judicial de guarda y tutela (para menores)\n• Recibo de sueldo con el descuento adicional del 1,5%',
+      '**Titular — Servicio doméstico:**',
+      '• F102/RT (formulario de pago ARCA)\n• Constancia de alta de trabajador (ARCA - solicitar al empleador)\n• Último recibo de sueldo\n• Último pago\n• DNI frente y dorso\n• Certificado de opción de cambio (solo en caso de haberlo realizado)',
     ],
     options: [
+      { label: 'Ver Cónyuge / Concubina', next: 'afiliacion_servicio_domestico_conyuge' },
+      { label: 'Ver Hijos', next: 'afiliacion_servicio_domestico_hijos' },
       { label: 'Consultar por mail', next: 'afiliacion_mail' },
-      { label: '← Volver a afiliación', next: 'afiliacion_menu' },
+      { label: '← Volver', next: 'afiliacion_servicio_domestico_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
-    back: 'afiliacion_menu',
+    back: 'afiliacion_servicio_domestico_menu',
+  },
+  afiliacion_servicio_domestico_conyuge: {
+    messages: [
+      '**Cónyuge / Concubina — Servicio doméstico:**',
+      '• Negativa de la ANSES\n• F575/RT (con el adherente)\n• Último recibo de sueldo del titular\n• Último pago (con el adherente)\n• DNI frente y dorso\n• Certificado de matrimonio / concubinato',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_servicio_domestico_titular' },
+      { label: 'Ver Hijos', next: 'afiliacion_servicio_domestico_hijos' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_servicio_domestico_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_servicio_domestico_menu',
+  },
+  afiliacion_servicio_domestico_hijos: {
+    messages: [
+      '**Hijos — Servicio doméstico:**',
+      '• F575/RT (con el adherente)\n• Último recibo de sueldo del titular\n• Último pago (con el adherente)\n• DNI frente y dorso\n• Partida de nacimiento\n• Constancia de CUIL',
+    ],
+    options: [
+      { label: 'Ver Titular', next: 'afiliacion_servicio_domestico_titular' },
+      { label: 'Consultar por mail', next: 'afiliacion_mail' },
+      { label: '← Volver', next: 'afiliacion_servicio_domestico_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'afiliacion_servicio_domestico_menu',
   },
 
   afiliacion_cambio: {
@@ -81,6 +275,7 @@ const FLOWS = {
     options: [
       { label: 'Consultar por mail', next: 'afiliacion_mail' },
       { label: '← Volver a afiliación', next: 'afiliacion_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'afiliacion_menu',
   },
@@ -104,6 +299,7 @@ const FLOWS = {
       { label: 'Estudios y prácticas ambulatorias', next: 'autorizaciones_estudios' },
       { label: 'Internación', next: 'autorizaciones_internacion' },
       { label: 'Medicación de alto costo', next: 'autorizaciones_medicacion' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'welcome',
   },
@@ -119,6 +315,7 @@ const FLOWS = {
       { label: 'Documentación necesaria para estudios', next: 'autorizaciones_estudios' },
       { label: 'Contacto autorizaciones', next: 'autorizaciones_contacto' },
       { label: '← Volver a autorizaciones', next: 'autorizaciones_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'autorizaciones_menu',
   },
@@ -133,6 +330,7 @@ const FLOWS = {
       { label: 'Consultar cartilla de prestadores', next: 'autorizaciones_cartilla' },
       { label: 'Contacto autorizaciones', next: 'autorizaciones_contacto' },
       { label: '← Volver a autorizaciones', next: 'autorizaciones_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'autorizaciones_menu',
   },
@@ -147,6 +345,7 @@ const FLOWS = {
     options: [
       { label: 'Contacto autorizaciones', next: 'autorizaciones_contacto' },
       { label: '← Volver a autorizaciones', next: 'autorizaciones_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'autorizaciones_menu',
   },
@@ -160,6 +359,7 @@ const FLOWS = {
     options: [
       { label: 'Contacto autorizaciones', next: 'autorizaciones_contacto' },
       { label: '← Volver a autorizaciones', next: 'autorizaciones_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'autorizaciones_menu',
   },
@@ -271,8 +471,17 @@ export default function CaraAssistant() {
   const [history, setHistory] = useState([])
   const [messages, setMessages] = useState([])
   const [typing, setTyping] = useState(false)
+  const [showTeaser, setShowTeaser] = useState(false)
   const bottomRef = useRef(null)
   const initialized = useRef(false)
+
+  // Show a proactive greeting bubble after a while on the page
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!open) setShowTeaser(true)
+    }, 8000)
+    return () => clearTimeout(timer)
+  }, [])
 
   // Push messages from a flow with a typing delay
   const playFlow = (flowKey, userLabel = null) => {
@@ -306,6 +515,7 @@ export default function CaraAssistant() {
       initialized.current = true
       playFlow('welcome')
     }
+    if (open) setShowTeaser(false)
   }, [open])
 
   // Scroll to bottom on new messages
@@ -340,7 +550,7 @@ export default function CaraAssistant() {
         }
         @media (min-width: 768px) {
           .cara-panel {
-            height: min(580px, calc(100vh - 6rem));
+            height: min(720px, calc(100vh - 6rem));
           }
         }
       `}</style>
@@ -359,8 +569,8 @@ export default function CaraAssistant() {
             className="flex items-center gap-3 px-4 py-3 shrink-0"
             style={{ background: 'linear-gradient(135deg, #3ec6f5 0%, #3dc2c6 100%)' }}
           >
-            <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center shrink-0">
-              <i className="fas fa-robot text-white text-base"></i>
+            <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 ring-2 ring-white/30">
+              <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
               <p className="text-white font-bold text-sm leading-none">CARA</p>
@@ -389,11 +599,8 @@ export default function CaraAssistant() {
                 className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.type === 'bot' && (
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mr-2 mt-0.5"
-                    style={{ background: 'linear-gradient(135deg, #3ec6f5, #3dc2c6)' }}
-                  >
-                    <i className="fas fa-robot text-white text-xs"></i>
+                  <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5">
+                    <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div
@@ -416,11 +623,8 @@ export default function CaraAssistant() {
             {/* Typing indicator */}
             {typing && (
               <div className="flex justify-start">
-                <div
-                  className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mr-2 mt-0.5"
-                  style={{ background: 'linear-gradient(135deg, #3ec6f5, #3dc2c6)' }}
-                >
-                  <i className="fas fa-robot text-white text-xs"></i>
+                <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5">
+                  <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
                 </div>
                 <div
                   className="px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm"
@@ -478,22 +682,41 @@ export default function CaraAssistant() {
         </div>
       )}
 
+      {/* Proactive teaser bubble */}
+      {showTeaser && !open && (
+        <div
+          className="fixed bottom-7 right-28 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl shadow-lg bg-white"
+          style={{ maxWidth: 220, fontFamily: "'Open Sans', sans-serif" }}
+        >
+          <p className="text-sm text-[#303030] flex-1">¿En qué puedo ayudarte?</p>
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              setShowTeaser(false)
+            }}
+            className="text-gray-400 hover:text-gray-600 transition-colors shrink-0"
+            aria-label="Cerrar mensaje"
+          >
+            <i className="fas fa-times text-xs"></i>
+          </button>
+        </div>
+      )}
+
       {/* Toggle button */}
       <button
-        onClick={() => setOpen(o => !o)}
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-4 py-3 rounded-full shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
-        style={{
-          background: open
-            ? '#888'
-            : 'linear-gradient(135deg, #3ec6f5 0%, #3dc2c6 100%)',
-          color: '#fff',
-          fontFamily: "'Open Sans', sans-serif",
+        onClick={() => {
+          setOpen(o => !o)
+          setShowTeaser(false)
         }}
+        className={`fixed bottom-4 right-4 z-50 flex items-center justify-center rounded-full bg-white shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 ${
+          open ? 'w-12 h-12' : 'w-20 h-20'
+        }`}
         aria-label={open ? 'Cerrar CARA' : 'Abrir CARA'}
       >
-        <i className={`fas ${open ? 'fa-times' : 'fa-comment-dots'} text-lg`}></i>
-        {!open && (
-          <span className="font-bold text-sm tracking-widest">CARA</span>
+        {open ? (
+          <i className="fas fa-times text-lg text-gray-500"></i>
+        ) : (
+          <img src={caraAvatar} alt="CARA" className="w-full h-full rounded-full object-cover" />
         )}
       </button>
     </>
