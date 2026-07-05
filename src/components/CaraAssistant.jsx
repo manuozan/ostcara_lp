@@ -391,16 +391,248 @@ const FLOWS = {
   // ── COSEGUROS ────────────────────────────────────────────────────────────────
   coseguros_info: {
     messages: [
-      '**Coseguros**',
-      'Los coseguros son el porcentaje que abona el afiliado al momento de recibir una prestación médica (consulta, estudio, etc.).',
-      '📌 El monto varía según el tipo de práctica y el prestador. Podés consultar los valores vigentes en la sección **COSEGUROS** del sitio.',
-      '📌 Los afiliados con ciertas condiciones (jubilados, pensionados, etc.) pueden tener coseguros reducidos o eximidos según normativa vigente.',
+      'Los coseguros se abonan directamente en el prestador al momento de la consulta. ¿Bajo qué tipo de aporte estás afiliado?',
     ],
     options: [
-      { label: 'Consultar por mail', next: 'contacto_mail' },
+      { label: 'Relación de dependencia', next: 'coseguros_dependencia_menu' },
+      { label: 'Monotributo / Monotributo social / Servicio doméstico', next: 'coseguros_monotributo_menu' },
       { label: '← Volver al inicio', next: 'welcome' },
     ],
     back: 'welcome',
+  },
+
+  // Relación de dependencia
+  coseguros_dependencia_menu: {
+    messages: ['**Coseguros — Relación de Dependencia** (vigencia Julio 2025)\n¿Qué práctica querés consultar?'],
+    options: [
+      { label: 'Consultas', next: 'coseguros_dependencia_consultas' },
+      { label: 'Psicología', next: 'coseguros_dependencia_psicologia' },
+      { label: 'Laboratorio', next: 'coseguros_dependencia_laboratorio' },
+      { label: 'Diagnósticas y terapéuticas', next: 'coseguros_dependencia_diagnosticas' },
+      { label: 'Kinesiología y fisiatría', next: 'coseguros_dependencia_kinesio' },
+      { label: 'Fonoaudiología', next: 'coseguros_dependencia_fono' },
+      { label: 'Atención domiciliaria', next: 'coseguros_dependencia_domiciliaria' },
+      { label: 'Odontología', next: 'coseguros_dependencia_odontologia' },
+      { label: 'Atención integral (por ley)', next: 'coseguros_dependencia_integral' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_info',
+  },
+  coseguros_dependencia_consultas: {
+    messages: [
+      '**Consultas — Relación de Dependencia:**',
+      '• Médico de familia, generalista, pediatras, tocoginecólogo — $7.475\n• Médicos especialistas — $12.954,75\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_psicologia: {
+    messages: [
+      '**Psicología — Relación de Dependencia:**',
+      '• Sesión incluida — $10.695\n• Sesión excedente — $20.355',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_laboratorio: {
+    messages: [
+      '**Prácticas de laboratorio — Relación de Dependencia:**',
+      '• Hasta 6 determinaciones básicas — $4.887,50\n• Valor extra por prestación adicional a las 6 definidas — $2.070',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_diagnosticas: {
+    messages: [
+      '**Prácticas diagnósticas y terapéuticas — Relación de Dependencia:**',
+      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $4.887,50\n• Mediana complejidad — $9.315\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $22.022,50',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_kinesio: {
+    messages: [
+      '**Kinesiología y fisiatría — Relación de Dependencia:**',
+      '• Por sesión — $5.060\n• Por sesión excedente — $8.625\n• Prácticas de enfermería — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_fono: {
+    messages: [
+      '**Fonoaudiología — Relación de Dependencia:**',
+      '• Por sesión de fonoaudiología y foniatría — $4.887,50',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_domiciliaria: {
+    messages: [
+      '**Atención domiciliaria — Relación de Dependencia:**',
+      '• Diurna (código verde) — $21.620\n• Nocturna (código verde) — $33.982,50\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $9.516,25',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_odontologia: {
+    messages: [
+      '**Odontología — Relación de Dependencia:**',
+      '• Consultas — $9.447,25\n• Consultas para menores de 15 años y mayores de 65 años — $4.887,50\n• Prácticas odontológicas — $9.447,25',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+  coseguros_dependencia_integral: {
+    messages: [
+      '**Atención integral (coberturas por ley) — Relación de Dependencia:**',
+      '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_dependencia_menu',
+  },
+
+  // Monotributo / Monotributo social / Servicio doméstico
+  coseguros_monotributo_menu: {
+    messages: ['**Coseguros — Monotributo / Monotributo Social / Servicio Doméstico**\n¿Qué práctica querés consultar?'],
+    options: [
+      { label: 'Consultas', next: 'coseguros_monotributo_consultas' },
+      { label: 'Psicología', next: 'coseguros_monotributo_psicologia' },
+      { label: 'Laboratorio', next: 'coseguros_monotributo_laboratorio' },
+      { label: 'Diagnósticas y terapéuticas', next: 'coseguros_monotributo_diagnosticas' },
+      { label: 'Kinesiología y fisiatría', next: 'coseguros_monotributo_kinesio' },
+      { label: 'Fonoaudiología', next: 'coseguros_monotributo_fono' },
+      { label: 'Atención domiciliaria', next: 'coseguros_monotributo_domiciliaria' },
+      { label: 'Odontología', next: 'coseguros_monotributo_odontologia' },
+      { label: 'Atención integral (por ley)', next: 'coseguros_monotributo_integral' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_info',
+  },
+  coseguros_monotributo_consultas: {
+    messages: [
+      '**Consultas — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Médico de familia, generalista, pediatras, tocoginecólogo — $15.000\n• Médicos especialistas — $22.500\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_psicologia: {
+    messages: [
+      '**Psicología — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Sesión incluida — $15.000\n• Sesión excedente — $22.500',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_laboratorio: {
+    messages: [
+      '**Prácticas de laboratorio — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Hasta 6 determinaciones básicas — $9.000\n• Valor extra por prestación adicional a las 6 definidas — $3.750',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_diagnosticas: {
+    messages: [
+      '**Prácticas diagnósticas y terapéuticas — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $9.000\n• Mediana complejidad — $14.250\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $37.500',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_kinesio: {
+    messages: [
+      '**Kinesiología y fisiatría — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Por sesión — $9.000\n• Por sesión excedente — $13.500\n• Prácticas de enfermería — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_fono: {
+    messages: [
+      '**Fonoaudiología — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Por sesión de fonoaudiología y foniatría — $9.000',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_domiciliaria: {
+    messages: [
+      '**Atención domiciliaria — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Diurna (código verde) — $37.500\n• Nocturna (código verde) — $75.000\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $22.500',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_odontologia: {
+    messages: [
+      '**Odontología — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Consultas — $14.250\n• Consultas para menores de 15 años y mayores de 65 años — $10.500\n• Prácticas odontológicas — $14.250',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
+  },
+  coseguros_monotributo_integral: {
+    messages: [
+      '**Atención integral (coberturas por ley) — Monotributo / Monotributo Social / Servicio Doméstico:**',
+      '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
+    ],
+    options: [
+      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
+      { label: '← Volver al inicio', next: 'welcome' },
+    ],
+    back: 'coseguros_monotributo_menu',
   },
 
   // ── CONTACTO ─────────────────────────────────────────────────────────────────
