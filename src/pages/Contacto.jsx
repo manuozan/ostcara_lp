@@ -8,7 +8,6 @@ const CONTACT_INFO = [
   { icon: 'fas fa-envelope', label: 'Email', value: 'secretaria@ostcara.org.ar' },
   { icon: 'fas fa-envelope', label: '', value: 'recepcion@ostcara.org.ar' },
   { icon: 'fas fa-envelope', label: '', value: 'afiliaciones@ostcara.org.ar' },
-  { icon: 'fas fa-envelope', label: '', value: 'auxiliarauditoria@ostcara.org.ar' },
 ]
 
 export default function Contacto() {

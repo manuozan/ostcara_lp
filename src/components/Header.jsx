@@ -39,8 +39,7 @@ export default function Header() {
           <div className="max-w-[1200px] mx-auto px-6 py-2 flex items-center justify-between">
             <div className="flex items-center gap-6">
               <span className="text-[11px] text-white/60 flex items-center gap-1.5">
-                <i className="fas fa-phone text-[#3dc2c6] text-[10px]"></i>
-                (011) 4371-7055 · 0800 345 1266
+                Obra Social de los Trabajadores de la Carne y Afines de la República Argentina
               </span>
               <span className="text-[11px] text-white/60 flex items-center gap-1.5">
                 <i className="fab fa-whatsapp text-[#3dc2c6] text-[10px]"></i>

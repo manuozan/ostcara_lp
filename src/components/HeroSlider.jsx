@@ -27,7 +27,6 @@ const SLIDES = [
     subtitle: 'Una obra social pensada para vos',
     buttonText: 'Ver requisitos',
     buttonTo: '/afiliacion',
-    to: '/afiliacion',
     textColor: '#2d3a45',
     fadeColor: '240,244,248',
   },

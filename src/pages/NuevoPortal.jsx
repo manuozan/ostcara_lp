@@ -13,7 +13,6 @@ const FEATURES = [
   {
     emoji: emojiDoc,
     title: 'Autorizaciones',
-    tag: 'próximamente',
     desc: 'Realizá solicitudes y seguí el estado de tus trámites.',
   },
   {

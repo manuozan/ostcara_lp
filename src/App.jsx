@@ -24,8 +24,8 @@ function Home() {
     <main className="flex-1">
       <HeroSlider />
       <CTASection />
-      <LlamandoDoctorSection />
       <ServicesGrid />
+      <LlamandoDoctorSection />
     </main>
   )
 }
