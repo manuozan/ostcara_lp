@@ -38,35 +38,24 @@ export default function Header() {
         <div className="hidden md:block" style={{ backgroundColor: '#1e2d3a' }}>
           <div className="max-w-[1200px] mx-auto px-6 py-2 flex items-center justify-between">
             <div className="flex items-center gap-6">
-              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
-                Obra Social de los Trabajadores de la Carne y Afines de la República Argentina
-              </span>
-              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
+              <a
+                href="https://wa.me/5491171722501"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] flex items-center gap-1.5"
+                style={{ color: 'rgba(255,255,255,0.6)' }}
+              >
                 <i className="fab fa-whatsapp text-[#3dc2c6] text-[10px]"></i>
-                +54 9 11 7172-2501
-              </span>
+                (011) 7172-2501
+              </a>
               <span className="text-[11px] text-white/60 flex items-center gap-1.5">
                 <i className="fas fa-envelope text-[#3dc2c6] text-[10px]"></i>
-                secretaria@ostcara.org.ar
+                recepcion@ostcara.org.ar
               </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <a
-                href="https://www.facebook.com/ObraSocialOSTCARA/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-white transition-colors"
-              >
-                <i className="fab fa-facebook-f text-[11px]"></i>
-              </a>
-              <a
-                href="https://twitter.com/ostcara"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/40 hover:text-white transition-colors"
-              >
-                <i className="fab fa-twitter text-[11px]"></i>
-              </a>
+              <span className="text-[11px] text-white/60 flex items-center gap-1.5">
+                <i className="fas fa-headset text-[#3dc2c6] text-[10px]"></i>
+                Atención al beneficiario 24 hs 0800-345-1266
+              </span>
             </div>
           </div>
         </div>

@@ -5,8 +5,8 @@ const GRUPOS_DEPENDENCIA = [
   {
     titulo: 'Consultas',
     items: [
-      { practica: 'Médico de familia, generalista, pediatras, tocoginecólogo', valor: 7475 },
-      { practica: 'Médicos especialistas', valor: 12954.75 },
+      { practica: 'Médico de familia, generalista, pediatras, tocoginecólogo', valor: 9521.7 },
+      { practica: 'Médicos especialistas', valor: 16498.5 },
       { practica: 'Programa HIV y Oncología', valor: null },
       { practica: 'Oncología', valor: null },
       { practica: 'Discapacidad', valor: null },
@@ -17,54 +17,54 @@ const GRUPOS_DEPENDENCIA = [
   {
     titulo: 'Psicología',
     items: [
-      { practica: 'Sesión incluida', valor: 10695 },
-      { practica: 'Sesión excedente', valor: 20355 },
+      { practica: 'Sesión incluida', valor: 13622.1 },
+      { practica: 'Sesión excedente', valor: 25923.3 },
     ],
   },
   {
     titulo: 'Prácticas de laboratorio',
     items: [
-      { practica: 'Hasta 6 determinaciones básicas', valor: 4887.5 },
-      { practica: 'Valor extra por prestación adicional a las 6 definidas', valor: 2070 },
+      { practica: 'Hasta 6 determinaciones básicas', valor: 6222 },
+      { practica: 'Valor extra por prestación adicional a las 6 definidas', valor: 2636.7 },
     ],
   },
   {
     titulo: 'Prácticas diagnósticas y terapéuticas',
     items: [
-      { practica: 'Imágenes de baja complejidad (RX simple y ecografía simple)', valor: 4887.5 },
-      { practica: 'Mediana complejidad', valor: 9315 },
-      { practica: 'Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía)', valor: 22022.5 },
+      { practica: 'Imágenes de baja complejidad (RX simple y ecografía simple)', valor: 6222 },
+      { practica: 'Mediana complejidad', valor: 11862.6 },
+      { practica: 'Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía)', valor: 28050 },
     ],
   },
   {
     titulo: 'Prácticas kinesiológicas y fisiátricas',
     items: [
-      { practica: 'Por sesión', valor: 5060 },
-      { practica: 'Por sesión excedente', valor: 8625 },
+      { practica: 'Por sesión', valor: 6446.4 },
+      { practica: 'Por sesión excedente', valor: 1383.12 },
       { practica: 'Prácticas de enfermería', valor: null },
     ],
   },
   {
     titulo: 'Fonoaudiología',
     items: [
-      { practica: 'Por sesión de fonoaudiología y foniatría', valor: 4887.5 },
+      { practica: 'Por sesión de fonoaudiología y foniatría', valor: 6222 },
     ],
   },
   {
     titulo: 'Atención domiciliaria — Consultas',
     items: [
-      { practica: 'Diurna (código verde)', valor: 21620 },
-      { practica: 'Nocturna (código verde)', valor: 33982.5 },
+      { practica: 'Diurna (código verde)', valor: 27534.9 },
+      { practica: 'Nocturna (código verde)', valor: 43278.6 },
       { practica: 'Emergencias (código rojo)', valor: null },
-      { practica: 'Mayores de 65 años', valor: 9516.25 },
+      { practica: 'Mayores de 65 años', valor: 1528.47 },
     ],
   },
   {
     titulo: 'Odontología',
     items: [
-      { practica: 'Consultas', valor: 9447.25 },
-      { practica: 'Consultas para menores de 15 años y mayores de 65 años', valor: 4887.5 },
-      { practica: 'Prácticas odontológicas', valor: 9447.25 },
+      { practica: 'Consultas', valor: 12036 },
+      { practica: 'Consultas para menores de 15 años y mayores de 65 años', valor: 6222 },
+      { practica: 'Prácticas odontológicas', valor: 12036 },
     ],
   },
   {
@@ -82,8 +82,8 @@ const GRUPOS_MONOTRIBUTO = [
   {
     titulo: 'Consultas',
     items: [
-      { practica: 'Médico de familia, generalista, pediatras, tocoginecólogo', valor: 15000 },
-      { practica: 'Médicos especialistas', valor: 22500 },
+      { practica: 'Médico de familia, generalista, pediatras, tocoginecólogo', valor: 24280 },
+      { practica: 'Médicos especialistas', valor: 36540 },
       { practica: 'Programa HIV y Oncología', valor: null },
       { practica: 'Oncología', valor: null },
       { practica: 'Discapacidad', valor: null },
@@ -94,54 +94,54 @@ const GRUPOS_MONOTRIBUTO = [
   {
     titulo: 'Psicología',
     items: [
-      { practica: 'Sesión incluida', valor: 15000 },
-      { practica: 'Sesión excedente', valor: 22500 },
+      { practica: 'Sesión incluida', valor: 24280 },
+      { practica: 'Sesión excedente', valor: 36545 },
     ],
   },
   {
     titulo: 'Prácticas de laboratorio',
     items: [
-      { practica: 'Hasta 6 determinaciones básicas', valor: 9000 },
-      { practica: 'Valor extra por prestación adicional a las 6 definidas', valor: 3750 },
+      { practica: 'Hasta 6 determinaciones básicas', valor: 14625 },
+      { practica: 'Valor extra por prestación adicional a las 6 definidas', valor: 5987 },
     ],
   },
   {
     titulo: 'Prácticas diagnósticas y terapéuticas',
     items: [
-      { practica: 'Imágenes de baja complejidad (RX simple y ecografía simple)', valor: 9000 },
-      { practica: 'Mediana complejidad', valor: 14250 },
-      { practica: 'Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía)', valor: 37500 },
+      { practica: 'Imágenes de baja complejidad (RX simple y ecografía simple)', valor: 14625 },
+      { practica: 'Mediana complejidad', valor: 23140 },
+      { practica: 'Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía)', valor: 59700.6 },
     ],
   },
   {
     titulo: 'Prácticas kinesiológicas y fisiátricas',
     items: [
-      { practica: 'Por sesión', valor: 9000 },
-      { practica: 'Por sesión excedente', valor: 13500 },
+      { practica: 'Por sesión', valor: 14625 },
+      { practica: 'Por sesión excedente', valor: 21496.5 },
       { practica: 'Prácticas de enfermería', valor: null },
     ],
   },
   {
     titulo: 'Fonoaudiología',
     items: [
-      { practica: 'Por sesión de fonoaudiología y foniatría', valor: 9000 },
+      { practica: 'Por sesión de fonoaudiología y foniatría', valor: 14625 },
     ],
   },
   {
     titulo: 'Atención domiciliaria — Consultas',
     items: [
-      { practica: 'Diurna (código verde)', valor: 37500 },
-      { practica: 'Nocturna (código verde)', valor: 75000 },
+      { practica: 'Diurna (código verde)', valor: 59700.6 },
+      { practica: 'Nocturna (código verde)', valor: 119406.3 },
       { practica: 'Emergencias (código rojo)', valor: null },
-      { practica: 'Mayores de 65 años', valor: 22500 },
+      { practica: 'Mayores de 65 años', valor: 36540 },
     ],
   },
   {
     titulo: 'Odontología',
     items: [
-      { practica: 'Consultas', valor: 14250 },
-      { practica: 'Consultas para menores de 15 años y mayores de 65 años', valor: 10500 },
-      { practica: 'Prácticas odontológicas', valor: 14250 },
+      { practica: 'Consultas', valor: 23138 },
+      { practica: 'Consultas para menores de 15 años y mayores de 65 años', valor: 17057 },
+      { practica: 'Prácticas odontológicas', valor: 23140 },
     ],
   },
   {
@@ -161,25 +161,28 @@ const CATEGORIAS = [
     label: 'Relación de Dependencia',
     icon: 'fas fa-briefcase',
     grupos: GRUPOS_DEPENDENCIA,
-    vigencia: 'Julio 2025',
+    vigencia: 'Julio 2026',
   },
   {
     key: 'monotributo',
     label: 'Monotributo',
     icon: 'fas fa-file-invoice-dollar',
     grupos: GRUPOS_MONOTRIBUTO,
+    vigencia: 'Julio 2026',
   },
   {
     key: 'monotributo-social',
     label: 'Monotributo Social',
     icon: 'fas fa-hand-holding-heart',
     grupos: GRUPOS_MONOTRIBUTO,
+    vigencia: 'Julio 2026',
   },
   {
     key: 'servicio-domestico',
     label: 'Servicio Doméstico',
     icon: 'fas fa-broom',
     grupos: GRUPOS_MONOTRIBUTO,
+    vigencia: 'Julio 2026',
   },
 ]
 

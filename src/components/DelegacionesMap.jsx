@@ -29,7 +29,6 @@ export default function DelegacionesMap() {
       const popupLines = [
         `<strong>${d.nombre} — ${d.provincia}</strong>`,
         d.direccion ? `Dirección: ${d.direccion}` : null,
-        d.responsable ? `Responsable: ${d.responsable}` : null,
         d.telefono ? `Tel: ${d.telefono}` : null,
         d.email ? `<a href="mailto:${d.email}">${d.email}</a>` : null,
       ].filter(Boolean).join('<br/>')

@@ -3,11 +3,9 @@ import PageLayout from '../components/PageLayout'
 
 const CONTACT_INFO = [
   { icon: 'fas fa-map-marker-alt', label: 'Dirección', value: 'Montevideo 589 7º A - CABA' },
-  { icon: 'fas fa-phone', label: 'Teléfono', value: '(011) 4371-7055 | 0800 345 1266' },
-  { icon: 'fab fa-whatsapp', label: 'WhatsApp', value: '+54 9 11 7172-2501' },
+  { icon: 'fab fa-whatsapp', label: 'WhatsApp', value: '(011) 7172-2501', href: 'https://wa.me/5491171722501' },
   { icon: 'fas fa-envelope', label: 'Email', value: 'secretaria@ostcara.org.ar' },
   { icon: 'fas fa-envelope', label: '', value: 'recepcion@ostcara.org.ar' },
-  { icon: 'fas fa-envelope', label: '', value: 'afiliaciones@ostcara.org.ar' },
 ]
 
 export default function Contacto() {
@@ -97,11 +95,44 @@ export default function Contacto() {
                 <i className={`${item.icon} text-[#3ec6f5] mt-0.5 w-4 text-center`}></i>
                 <div>
                   {item.label && <span className="text-xs font-bold text-[#444] block">{item.label}</span>}
-                  <span className="text-sm text-gray-500">{item.value}</span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-500 hover:text-[#3ec6f5] transition-colors"
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span className="text-sm text-gray-500">{item.value}</span>
+                  )}
                 </div>
               </li>
             ))}
           </ul>
+
+          <div className="mt-6 flex items-center gap-3 p-4" style={{ backgroundColor: '#1e2d3a' }}>
+            <i className="fas fa-headset text-[#3dc2c6] text-lg"></i>
+            <div>
+              <span className="text-xs font-bold text-white block uppercase tracking-wide">Atención al beneficiario 24 hs</span>
+              <span className="text-sm text-white/70 block">Derivaciones y orientación de cartilla</span>
+              <span className="text-sm text-white/70">0800-345-1266</span>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5491171722501"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex items-center justify-center gap-2 w-full px-5 py-3 text-sm font-bold text-white transition-colors duration-200"
+            style={{ backgroundColor: '#25D366' }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#1ebe57'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#25D366'}
+          >
+            <i className="fab fa-whatsapp text-base"></i>
+            Comunicate por WhatsApp
+          </a>
         </div>
       </div>
     </PageLayout>

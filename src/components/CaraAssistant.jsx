@@ -6,7 +6,7 @@ import caraAvatar from '../assets/cara.png'
 const FLOWS = {
   welcome: {
     messages: [
-      '¡Hola! Soy **CARA**, tu asistente de OSTCARA. 👋',
+      '¡Hola! Soy **BOTSCARA**, tu asistente de OSTCARA. 👋',
       '¿En qué puedo ayudarte hoy?',
     ],
     options: [
@@ -801,11 +801,11 @@ export default function CaraAssistant() {
             className="flex items-center gap-3 px-4 py-3 shrink-0"
             style={{ background: 'linear-gradient(135deg, #3ec6f5 0%, #3dc2c6 100%)' }}
           >
-            <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 ring-2 ring-white/30">
-              <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
+            <div className="w-9 h-9 rounded-full overflow-hidden shrink-0 ring-2 ring-white/30 bg-white">
+              <img src={caraAvatar} alt="BOTSCARA" className="w-full h-full object-cover" />
             </div>
             <div className="flex-1">
-              <p className="text-white font-bold text-sm leading-none">CARA</p>
+              <p className="text-white font-bold text-sm leading-none">BOTSCARA</p>
               <p className="text-white/80 text-xs mt-0.5">Asistente OSTCARA</p>
             </div>
             <button
@@ -831,8 +831,8 @@ export default function CaraAssistant() {
                 className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {msg.type === 'bot' && (
-                  <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5">
-                    <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
+                  <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5 bg-white">
+                    <img src={caraAvatar} alt="BOTSCARA" className="w-full h-full object-cover" />
                   </div>
                 )}
                 <div
@@ -855,8 +855,8 @@ export default function CaraAssistant() {
             {/* Typing indicator */}
             {typing && (
               <div className="flex justify-start">
-                <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5">
-                  <img src={caraAvatar} alt="CARA" className="w-full h-full object-cover" />
+                <div className="w-6 h-6 rounded-full overflow-hidden shrink-0 mr-2 mt-0.5 bg-white">
+                  <img src={caraAvatar} alt="BOTSCARA" className="w-full h-full object-cover" />
                 </div>
                 <div
                   className="px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm"
@@ -943,12 +943,12 @@ export default function CaraAssistant() {
         className={`fixed bottom-4 right-4 z-50 flex items-center justify-center rounded-full bg-white shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 ${
           open ? 'w-12 h-12' : 'w-20 h-20'
         }`}
-        aria-label={open ? 'Cerrar CARA' : 'Abrir CARA'}
+        aria-label={open ? 'Cerrar BOTSCARA' : 'Abrir BOTSCARA'}
       >
         {open ? (
           <i className="fas fa-times text-lg text-gray-500"></i>
         ) : (
-          <img src={caraAvatar} alt="CARA" className="w-full h-full rounded-full object-cover" />
+          <img src={caraAvatar} alt="BOTSCARA" className="w-full h-full rounded-full object-cover" />
         )}
       </button>
     </>

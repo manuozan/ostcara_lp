@@ -20,7 +20,7 @@ export default function Delegaciones() {
         ¡Aprovechá el mapa interactivo de OSTCARA y buscá tu delegación más cercana, dirección, teléfono y mucho más!
       </p>
 
-      <div className="w-full overflow-hidden rounded" style={{ height: 500 }}>
+      <div className="w-full overflow-hidden rounded isolate relative" style={{ height: 500, zIndex: 0 }}>
         <DelegacionesMap />
       </div>
 
@@ -51,12 +51,6 @@ export default function Delegaciones() {
                     <p className="flex items-start gap-2 mb-1">
                       <i className="fas fa-phone text-[#3dc2c6] mt-0.5 shrink-0"></i>
                       <span>{d.telefono}</span>
-                    </p>
-                  )}
-                  {d.responsable && (
-                    <p className="flex items-start gap-2 mb-1">
-                      <i className="fas fa-user text-[#3dc2c6] mt-0.5 shrink-0"></i>
-                      <span>{d.responsable}</span>
                     </p>
                   )}
                   {d.email && (
