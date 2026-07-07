@@ -422,6 +422,7 @@ const FLOWS = {
     messages: [
       '**Consultas — Relación de Dependencia:**',
       '• Médico de familia, generalista, pediatras, tocoginecólogo — $9.521,70\n• Médicos especialistas — $16.498,50\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -433,6 +434,7 @@ const FLOWS = {
     messages: [
       '**Psicología — Relación de Dependencia:**',
       '• Sesión incluida — $13.622,10\n• Sesión excedente — $25.923,30',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -444,6 +446,7 @@ const FLOWS = {
     messages: [
       '**Prácticas de laboratorio — Relación de Dependencia:**',
       '• Hasta 6 determinaciones básicas — $6.222\n• Valor extra por prestación adicional a las 6 definidas — $2.636,70',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -455,6 +458,7 @@ const FLOWS = {
     messages: [
       '**Prácticas diagnósticas y terapéuticas — Relación de Dependencia:**',
       '• Imágenes de baja complejidad (RX simple y ecografía simple) — $6.222\n• Mediana complejidad — $11.862,60\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $28.050',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -466,6 +470,7 @@ const FLOWS = {
     messages: [
       '**Kinesiología y fisiatría — Relación de Dependencia:**',
       '• Por sesión — $6.446,40\n• Por sesión excedente — $1.383,12\n• Prácticas de enfermería — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -477,6 +482,7 @@ const FLOWS = {
     messages: [
       '**Fonoaudiología — Relación de Dependencia:**',
       '• Por sesión de fonoaudiología y foniatría — $6.222',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -488,6 +494,7 @@ const FLOWS = {
     messages: [
       '**Atención domiciliaria — Relación de Dependencia:**',
       '• Diurna (código verde) — $27.534,90\n• Nocturna (código verde) — $43.278,60\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $1.528,47',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -499,6 +506,7 @@ const FLOWS = {
     messages: [
       '**Odontología — Relación de Dependencia:**',
       '• Consultas — $12.036\n• Consultas para menores de 15 años y mayores de 65 años — $6.222\n• Prácticas odontológicas — $12.036',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -510,6 +518,7 @@ const FLOWS = {
     messages: [
       '**Atención integral (coberturas por ley) — Relación de Dependencia:**',
       '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -539,6 +548,7 @@ const FLOWS = {
     messages: [
       '**Consultas — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Médico de familia, generalista, pediatras, tocoginecólogo — $24.280\n• Médicos especialistas — $36.540\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -550,6 +560,7 @@ const FLOWS = {
     messages: [
       '**Psicología — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Sesión incluida — $24.280\n• Sesión excedente — $36.545',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -561,6 +572,7 @@ const FLOWS = {
     messages: [
       '**Prácticas de laboratorio — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Hasta 6 determinaciones básicas — $14.625\n• Valor extra por prestación adicional a las 6 definidas — $5.987',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -572,6 +584,7 @@ const FLOWS = {
     messages: [
       '**Prácticas diagnósticas y terapéuticas — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Imágenes de baja complejidad (RX simple y ecografía simple) — $14.625\n• Mediana complejidad — $23.140\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $59.700,60',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -583,6 +596,7 @@ const FLOWS = {
     messages: [
       '**Kinesiología y fisiatría — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Por sesión — $14.625\n• Por sesión excedente — $21.496,50\n• Prácticas de enfermería — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -594,6 +608,7 @@ const FLOWS = {
     messages: [
       '**Fonoaudiología — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Por sesión de fonoaudiología y foniatría — $14.625',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -605,6 +620,7 @@ const FLOWS = {
     messages: [
       '**Atención domiciliaria — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Diurna (código verde) — $59.700,60\n• Nocturna (código verde) — $119.406,30\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $36.540',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -616,6 +632,7 @@ const FLOWS = {
     messages: [
       '**Odontología — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Consultas — $23.138\n• Consultas para menores de 15 años y mayores de 65 años — $17.057\n• Prácticas odontológicas — $23.140',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -627,6 +644,7 @@ const FLOWS = {
     messages: [
       '**Atención integral (coberturas por ley) — Monotributo / Monotributo Social / Servicio Doméstico:**',
       '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
+      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },

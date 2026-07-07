@@ -1,0 +1,530 @@
+{
+  "plan": "COSEGUROS OSTCARA - AFILIADOS MONOTRIBUTO, MONOTRIBUTO SOCIAL Y SERVICIO DOMESTICO",
+  "vigencias": {
+    "2025-06": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 12000.00,
+        "medicos_especialistas": 18000.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 12000.00, "sesion_excedente": 18000.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 7200.00, "valor_extra_prestacion_adicional": 3000.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 7200.00,
+        "mediana_complejidad": 11400.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 30000.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 7200.00, "por_sesion_excedente": 10800.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 7200.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 30000.00,
+        "nocturna_codigo_verde": 60000.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 18000.00
+      },
+      "odontologia": { "consultas": 11400.00, "consultas_menores_15_mayores_65": 8400.00, "practicas_odontologicas": 11400.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      }
+    },
+    "2025-07": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 15000.00,
+        "medicos_especialistas": 22500.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 15000.00, "sesion_excedente": 22500.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 9000.00, "valor_extra_prestacion_adicional": 3750.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 9000.00,
+        "mediana_complejidad": 14250.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 37500.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 9000.00, "por_sesion_excedente": 13500.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 9000.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 37500.00,
+        "nocturna_codigo_verde": 75000.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 22500.00
+      },
+      "odontologia": { "consultas": 14250.00, "consultas_menores_15_mayores_65": 10500.00, "practicas_odontologicas": 14250.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      }
+    },
+    "2025-08": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 18750.00,
+        "medicos_especialistas": 28125.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 18750.00, "sesion_excedente": 28125.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 11250.00, "valor_extra_prestacion_adicional": 4687.50 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 11250.00,
+        "mediana_complejidad": 17812.50,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 46875.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 11250.00, "por_sesion_excedente": 16875.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 11250.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 46875.00,
+        "nocturna_codigo_verde": 93750.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 28125.00
+      },
+      "odontologia": { "consultas": 17812.50, "consultas_menores_15_mayores_65": 13125.00, "practicas_odontologicas": 17812.50 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      }
+    },
+    "2025-09": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 20000.00,
+        "medicos_especialistas": 30100.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 20000.00, "sesion_excedente": 30100.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 12050.00, "valor_extra_prestacion_adicional": 5020.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 12050.00,
+        "mediana_complejidad": 19060.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 50155.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 12050.00, "por_sesion_excedente": 18060.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 12050.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 50155.00,
+        "nocturna_codigo_verde": 100315.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 30100.00
+      },
+      "odontologia": { "consultas": 19060.00, "consultas_menores_15_mayores_65": 14050.00, "practicas_odontologicas": 19060.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      }
+    },
+    "2025-10": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 20000.00,
+        "medicos_especialistas": 30100.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 20000.00, "sesion_excedente": 30100.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 12050.00, "valor_extra_prestacion_adicional": 5020.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 12050.00,
+        "mediana_complejidad": 19060.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 50155.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 12050.00, "por_sesion_excedente": 18060.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 12050.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 50155.00,
+        "nocturna_codigo_verde": 100315.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 30100.00
+      },
+      "odontologia": { "consultas": 19060.00, "consultas_menores_15_mayores_65": 14050.00, "practicas_odontologicas": 19060.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "OCTUBRE-NOV-DIC 2025"
+    },
+    "2025-11": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 20000.00,
+        "medicos_especialistas": 30100.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 20000.00, "sesion_excedente": 30100.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 12050.00, "valor_extra_prestacion_adicional": 5020.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 12050.00,
+        "mediana_complejidad": 19060.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 50155.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 12050.00, "por_sesion_excedente": 18060.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 12050.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 50155.00,
+        "nocturna_codigo_verde": 100315.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 30100.00
+      },
+      "odontologia": { "consultas": 19060.00, "consultas_menores_15_mayores_65": 14050.00, "practicas_odontologicas": 19060.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "OCTUBRE-NOV-DIC 2025"
+    },
+    "2025-12": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 20000.00,
+        "medicos_especialistas": 30100.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 20000.00, "sesion_excedente": 30100.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 12050.00, "valor_extra_prestacion_adicional": 5020.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 12050.00,
+        "mediana_complejidad": 19060.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 50155.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 12050.00, "por_sesion_excedente": 18060.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 12050.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 50155.00,
+        "nocturna_codigo_verde": 100315.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 30100.00
+      },
+      "odontologia": { "consultas": 19060.00, "consultas_menores_15_mayores_65": 14050.00, "practicas_odontologicas": 19060.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "OCTUBRE-NOV-DIC 2025"
+    },
+    "2026-01": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 22000.00,
+        "medicos_especialistas": 33110.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 22000.00, "sesion_excedente": 33110.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 13255.00, "valor_extra_prestacion_adicional": 5522.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 13255.00,
+        "mediana_complejidad": 20966.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 55170.50
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 13255.00, "por_sesion_excedente": 19866.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 13255.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 55170.50,
+        "nocturna_codigo_verde": 110346.50,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 33110.00
+      },
+      "odontologia": { "consultas": 20966.00, "consultas_menores_15_mayores_65": 15455.00, "practicas_odontologicas": 20966.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "ENERO-MARZO 2026"
+    },
+    "2026-02": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 22000.00,
+        "medicos_especialistas": 33110.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 22000.00, "sesion_excedente": 33110.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 13255.00, "valor_extra_prestacion_adicional": 5522.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 13255.00,
+        "mediana_complejidad": 20966.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 55170.50
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 13255.00, "por_sesion_excedente": 19866.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 13255.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 55170.50,
+        "nocturna_codigo_verde": 110346.50,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 33110.00
+      },
+      "odontologia": { "consultas": 20966.00, "consultas_menores_15_mayores_65": 15455.00, "practicas_odontologicas": 20966.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "ENERO-MARZO 2026"
+    },
+    "2026-03": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 22000.00,
+        "medicos_especialistas": 33110.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 22000.00, "sesion_excedente": 33110.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 13255.00, "valor_extra_prestacion_adicional": 5522.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 13255.00,
+        "mediana_complejidad": 20966.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 55170.50
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 13255.00, "por_sesion_excedente": 19866.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 13255.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 55170.50,
+        "nocturna_codigo_verde": 110346.50,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 33110.00
+      },
+      "odontologia": { "consultas": 20966.00, "consultas_menores_15_mayores_65": 15455.00, "practicas_odontologicas": 20966.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "ENERO-MARZO 2026"
+    },
+    "2026-04": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 22660.00,
+        "medicos_especialistas": 34105.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 22660.00, "sesion_excedente": 34105.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 13652.00, "valor_extra_prestacion_adicional": 5687.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 13652.00,
+        "mediana_complejidad": 21595.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 56825.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 13652.00, "por_sesion_excedente": 20460.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 13652.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 56825.00,
+        "nocturna_codigo_verde": 113655.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 34103.00
+      },
+      "odontologia": { "consultas": 21595.00, "consultas_menores_15_mayores_65": 15918.00, "practicas_odontologicas": 21595.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "ABRIL 2026",
+      "_nota": "Fuente indica 'Mayores 65 años' = 34.103,00 mientras que 'Medicos especialistas' = 34.105,00 (posible error de tipeo del original)"
+    },
+    "2026-05": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 23339.00,
+        "medicos_especialistas": 35125.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 23339.00, "sesion_excedente": 35128.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 14060.00, "valor_extra_prestacion_adicional": 5757.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 14060.00,
+        "mediana_complejidad": 22240.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 58530.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 14060.00, "por_sesion_excedente": 21075.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 14060.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 58530.00,
+        "nocturna_codigo_verde": 117065.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 35125.00
+      },
+      "odontologia": { "consultas": 22240.00, "consultas_menores_15_mayores_65": 16395.00, "practicas_odontologicas": 22240.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "MAYO 2026",
+      "_nota": "Fuente indica 'sesion incluida psicologia' = 23.339,00 pero 'sesion excedente psicologia' = 35.128,00 (medicos especialistas = 35.125,00)"
+    },
+    "2026-06": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 23339.00,
+        "medicos_especialistas": 35125.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 23339.00, "sesion_excedente": 35128.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 14060.00, "valor_extra_prestacion_adicional": 5757.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 14060.00,
+        "mediana_complejidad": 22240.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 58530.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 14060.00, "por_sesion_excedente": 21075.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 14060.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 58530.00,
+        "nocturna_codigo_verde": 117065.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 35125.00
+      },
+      "odontologia": { "consultas": 22240.00, "consultas_menores_15_mayores_65": 16395.00, "practicas_odontologicas": 22240.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "JUNIO 2026"
+    },
+    "2026-07": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 24280.00,
+        "medicos_especialistas": 36540.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 24280.00, "sesion_excedente": 36545.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 14625.00, "valor_extra_prestacion_adicional": 5987.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 14625.00,
+        "mediana_complejidad": 23140.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 59700.60
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 14625.00, "por_sesion_excedente": 21496.50 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 14625.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 59700.60,
+        "nocturna_codigo_verde": 119406.30,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 36540.00
+      },
+      "odontologia": { "consultas": 23138.00, "consultas_menores_15_mayores_65": 17057.00, "practicas_odontologicas": 23140.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "JULIO 2026",
+      "_nota": "Fuente indica 'Consultas' odontologia = 23.138,00 pero 'Practicas odontologicas' = 23.140,00 (posible error de tipeo del original)"
+    },
+    "2026-08": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 24765.00,
+        "medicos_especialistas": 37270.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 24765.00, "sesion_excedente": 37275.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 15000.00, "valor_extra_prestacion_adicional": 6105.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 15000.00,
+        "mediana_complejidad": 23600.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 62110.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 15000.00, "por_sesion_excedente": 22368.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 14915.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 62110.00,
+        "nocturna_codigo_verde": 124225.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 37270.00
+      },
+      "odontologia": { "consultas": 23600.00, "consultas_menores_15_mayores_65": 17398.00, "practicas_odontologicas": 23600.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "AGOSTO 2026",
+      "_nota": "Fuente indica 'Fonoaudiologia y Foniatria' = 14.915,00, distinto de laboratorio/kinesio/diagnostica baja complejidad que están en 15.000,00 (posible error de tipeo del original)"
+    }
+  }
+}

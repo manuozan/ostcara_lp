@@ -57,7 +57,7 @@ export default function Cartilla() {
           to="/coseguros"
           className="flex items-center gap-3 p-4 border border-gray-200 hover:border-[#3ec6f5] hover:bg-[#f0fbff] transition-colors group"
         >
-          <i className="fas fa-circle-info text-2xl text-[#3ec6f5] shrink-0"></i>
+          <i className="fas fa-info-circle text-2xl text-[#3ec6f5] shrink-0"></i>
           <span className="text-sm text-[#444] group-hover:text-[#3ec6f5] font-medium" style={{ fontFamily: "'Open Sans', sans-serif" }}>
             Consultá los coseguros vigentes
           </span>
