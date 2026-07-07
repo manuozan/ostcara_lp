@@ -403,7 +403,7 @@ const FLOWS = {
 
   // Relación de dependencia
   coseguros_dependencia_menu: {
-    messages: ['**Coseguros — Relación de Dependencia** (vigencia Julio 2025)\n¿Qué práctica querés consultar?'],
+    messages: ['**Coseguros — Relación de Dependencia** (vigencia Julio 2026)\n¿Qué práctica querés consultar?'],
     options: [
       { label: 'Consultas', next: 'coseguros_dependencia_consultas' },
       { label: 'Psicología', next: 'coseguros_dependencia_psicologia' },
@@ -421,7 +421,7 @@ const FLOWS = {
   coseguros_dependencia_consultas: {
     messages: [
       '**Consultas — Relación de Dependencia:**',
-      '• Médico de familia, generalista, pediatras, tocoginecólogo — $7.475\n• Médicos especialistas — $12.954,75\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+      '• Médico de familia, generalista, pediatras, tocoginecólogo — $9.521,70\n• Médicos especialistas — $16.498,50\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -432,7 +432,7 @@ const FLOWS = {
   coseguros_dependencia_psicologia: {
     messages: [
       '**Psicología — Relación de Dependencia:**',
-      '• Sesión incluida — $10.695\n• Sesión excedente — $20.355',
+      '• Sesión incluida — $13.622,10\n• Sesión excedente — $25.923,30',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -443,7 +443,7 @@ const FLOWS = {
   coseguros_dependencia_laboratorio: {
     messages: [
       '**Prácticas de laboratorio — Relación de Dependencia:**',
-      '• Hasta 6 determinaciones básicas — $4.887,50\n• Valor extra por prestación adicional a las 6 definidas — $2.070',
+      '• Hasta 6 determinaciones básicas — $6.222\n• Valor extra por prestación adicional a las 6 definidas — $2.636,70',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -454,7 +454,7 @@ const FLOWS = {
   coseguros_dependencia_diagnosticas: {
     messages: [
       '**Prácticas diagnósticas y terapéuticas — Relación de Dependencia:**',
-      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $4.887,50\n• Mediana complejidad — $9.315\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $22.022,50',
+      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $6.222\n• Mediana complejidad — $11.862,60\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $28.050',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -465,7 +465,7 @@ const FLOWS = {
   coseguros_dependencia_kinesio: {
     messages: [
       '**Kinesiología y fisiatría — Relación de Dependencia:**',
-      '• Por sesión — $5.060\n• Por sesión excedente — $8.625\n• Prácticas de enfermería — EXENTO',
+      '• Por sesión — $6.446,40\n• Por sesión excedente — $1.383,12\n• Prácticas de enfermería — EXENTO',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -476,7 +476,7 @@ const FLOWS = {
   coseguros_dependencia_fono: {
     messages: [
       '**Fonoaudiología — Relación de Dependencia:**',
-      '• Por sesión de fonoaudiología y foniatría — $4.887,50',
+      '• Por sesión de fonoaudiología y foniatría — $6.222',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -487,7 +487,7 @@ const FLOWS = {
   coseguros_dependencia_domiciliaria: {
     messages: [
       '**Atención domiciliaria — Relación de Dependencia:**',
-      '• Diurna (código verde) — $21.620\n• Nocturna (código verde) — $33.982,50\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $9.516,25',
+      '• Diurna (código verde) — $27.534,90\n• Nocturna (código verde) — $43.278,60\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $1.528,47',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -498,7 +498,7 @@ const FLOWS = {
   coseguros_dependencia_odontologia: {
     messages: [
       '**Odontología — Relación de Dependencia:**',
-      '• Consultas — $9.447,25\n• Consultas para menores de 15 años y mayores de 65 años — $4.887,50\n• Prácticas odontológicas — $9.447,25',
+      '• Consultas — $12.036\n• Consultas para menores de 15 años y mayores de 65 años — $6.222\n• Prácticas odontológicas — $12.036',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
@@ -520,7 +520,7 @@ const FLOWS = {
 
   // Monotributo / Monotributo social / Servicio doméstico
   coseguros_monotributo_menu: {
-    messages: ['**Coseguros — Monotributo / Monotributo Social / Servicio Doméstico**\n¿Qué práctica querés consultar?'],
+    messages: ['**Coseguros — Monotributo / Monotributo Social / Servicio Doméstico** (vigencia Julio 2026)\n¿Qué práctica querés consultar?'],
     options: [
       { label: 'Consultas', next: 'coseguros_monotributo_consultas' },
       { label: 'Psicología', next: 'coseguros_monotributo_psicologia' },
@@ -538,7 +538,7 @@ const FLOWS = {
   coseguros_monotributo_consultas: {
     messages: [
       '**Consultas — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Médico de familia, generalista, pediatras, tocoginecólogo — $15.000\n• Médicos especialistas — $22.500\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
+      '• Médico de familia, generalista, pediatras, tocoginecólogo — $24.280\n• Médicos especialistas — $36.540\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -549,7 +549,7 @@ const FLOWS = {
   coseguros_monotributo_psicologia: {
     messages: [
       '**Psicología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Sesión incluida — $15.000\n• Sesión excedente — $22.500',
+      '• Sesión incluida — $24.280\n• Sesión excedente — $36.545',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -560,7 +560,7 @@ const FLOWS = {
   coseguros_monotributo_laboratorio: {
     messages: [
       '**Prácticas de laboratorio — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Hasta 6 determinaciones básicas — $9.000\n• Valor extra por prestación adicional a las 6 definidas — $3.750',
+      '• Hasta 6 determinaciones básicas — $14.625\n• Valor extra por prestación adicional a las 6 definidas — $5.987',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -571,7 +571,7 @@ const FLOWS = {
   coseguros_monotributo_diagnosticas: {
     messages: [
       '**Prácticas diagnósticas y terapéuticas — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $9.000\n• Mediana complejidad — $14.250\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $37.500',
+      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $14.625\n• Mediana complejidad — $23.140\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $59.700,60',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -582,7 +582,7 @@ const FLOWS = {
   coseguros_monotributo_kinesio: {
     messages: [
       '**Kinesiología y fisiatría — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Por sesión — $9.000\n• Por sesión excedente — $13.500\n• Prácticas de enfermería — EXENTO',
+      '• Por sesión — $14.625\n• Por sesión excedente — $21.496,50\n• Prácticas de enfermería — EXENTO',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -593,7 +593,7 @@ const FLOWS = {
   coseguros_monotributo_fono: {
     messages: [
       '**Fonoaudiología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Por sesión de fonoaudiología y foniatría — $9.000',
+      '• Por sesión de fonoaudiología y foniatría — $14.625',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -604,7 +604,7 @@ const FLOWS = {
   coseguros_monotributo_domiciliaria: {
     messages: [
       '**Atención domiciliaria — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Diurna (código verde) — $37.500\n• Nocturna (código verde) — $75.000\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $22.500',
+      '• Diurna (código verde) — $59.700,60\n• Nocturna (código verde) — $119.406,30\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $36.540',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
@@ -615,7 +615,7 @@ const FLOWS = {
   coseguros_monotributo_odontologia: {
     messages: [
       '**Odontología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Consultas — $14.250\n• Consultas para menores de 15 años y mayores de 65 años — $10.500\n• Prácticas odontológicas — $14.250',
+      '• Consultas — $23.138\n• Consultas para menores de 15 años y mayores de 65 años — $17.057\n• Prácticas odontológicas — $23.140',
     ],
     options: [
       { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
