@@ -212,7 +212,7 @@ export default function Footer() {
               title="Superintendencia de Servicios de Salud"
               className="shrink-0 opacity-90 hover:opacity-100 transition-opacity"
             >
-              <img src={logoSSS} alt="Superintendencia de Servicios de Salud" height="32" className="h-8 w-auto" />
+              <img src={logoSSS} alt="Superintendencia de Servicios de Salud" height="56" className="h-14 w-auto" />
             </a>
             <p
               className="text-[11px] text-white/25"
