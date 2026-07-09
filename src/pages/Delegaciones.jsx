@@ -1,6 +1,6 @@
 import PageLayout from '../components/PageLayout'
 import DelegacionesMap from '../components/DelegacionesMap'
-import { DELEGACIONES } from '../data/delegaciones'
+import { DELEGACIONES, telefonoToWhatsAppUrl } from '../data/delegaciones'
 
 function agruparPorProvincia(delegaciones) {
   const grupos = {}
@@ -50,7 +50,21 @@ export default function Delegaciones() {
                   {d.telefono && (
                     <p className="flex items-start gap-2 mb-1">
                       <i className="fas fa-phone text-[#3dc2c6] mt-0.5 shrink-0"></i>
-                      <span>{d.telefono}</span>
+                      <span>
+                        {d.telefono.split('/').map((num, i, arr) => (
+                          <span key={num}>
+                            <a
+                              href={telefonoToWhatsAppUrl(num)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-[#3dc2c6] hover:underline"
+                            >
+                              {num.trim()}
+                            </a>
+                            {i < arr.length - 1 && ' / '}
+                          </span>
+                        ))}
+                      </span>
                     </p>
                   )}
                   {d.email && (

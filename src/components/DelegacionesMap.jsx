@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { DELEGACIONES } from '../data/delegaciones'
+import { DELEGACIONES, telefonoToWhatsAppUrl } from '../data/delegaciones'
 
 const pinIcon = L.divIcon({
   className: '',
@@ -29,7 +29,12 @@ export default function DelegacionesMap() {
       const popupLines = [
         `<strong>${d.nombre} — ${d.provincia}</strong>`,
         d.direccion ? `Dirección: ${d.direccion}` : null,
-        d.telefono ? `Tel: ${d.telefono}` : null,
+        d.telefono
+          ? `Tel: ${d.telefono
+              .split('/')
+              .map((num) => `<a href="${telefonoToWhatsAppUrl(num)}" target="_blank" rel="noopener noreferrer">${num.trim()}</a>`)
+              .join(' / ')}`
+          : null,
         d.email ? `<a href="mailto:${d.email}">${d.email}</a>` : null,
       ].filter(Boolean).join('<br/>')
 
