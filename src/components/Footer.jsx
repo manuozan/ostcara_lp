@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import logoSSS from '../assets/logo_sss.png'
 
 const NEWS_ARTICLES = [
   {
@@ -197,13 +198,22 @@ export default function Footer() {
 
         {/* Copyright bar */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="max-w-[1200px] mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p
               className="text-[11px] text-white/30"
               style={{ fontFamily: "'Open Sans', sans-serif" }}
             >
               © {new Date().getFullYear()} OSTCARA · Todos los derechos reservados
             </p>
+            <a
+              href="https://www.argentina.gob.ar/sssalud"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Superintendencia de Servicios de Salud"
+              className="shrink-0 opacity-90 hover:opacity-100 transition-opacity"
+            >
+              <img src={logoSSS} alt="Superintendencia de Servicios de Salud" height="32" className="h-8 w-auto" />
+            </a>
             <p
               className="text-[11px] text-white/25"
               style={{ fontFamily: "'Open Sans', sans-serif" }}
