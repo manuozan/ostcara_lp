@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import logoOstcara from '../assets/logo-ostcara.svg'
 
 const NAV_ITEMS = [
   { label: 'Inicio', to: '/' },
@@ -12,7 +13,7 @@ const NAV_ITEMS = [
   { label: 'Contacto', to: '/contacto' },
 ]
 
-const LOGO_URL = 'https://ostcara.com.ar/wp-content/uploads/2019/12/logo.svg'
+const LOGO_URL = logoOstcara
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)

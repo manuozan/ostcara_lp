@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import logoSSS from '../assets/logo_sss.png'
+import logoOstcara from '../assets/logo-ostcara.svg'
 
 const NEWS_ARTICLES = [
   {
@@ -118,7 +119,7 @@ export default function Footer() {
             {/* Column 1 — Brand */}
             <div>
               <img
-                src="https://ostcara.com.ar/wp-content/uploads/2019/12/logo.svg"
+                src={logoOstcara}
                 alt="OSTCARA"
                 width="130"
                 style={{ filter: 'brightness(0) invert(1)', opacity: 0.9 }}
