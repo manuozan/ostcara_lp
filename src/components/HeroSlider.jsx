@@ -1,4 +1,6 @@
 import banner1 from '../assets/banner1.png'
+import slide2Afiliate from '../assets/slide2-afiliate.jpg'
+import slide3Delegacion from '../assets/slide3-delegacion.jpg'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules'
@@ -22,7 +24,7 @@ const SLIDES = [
   {
     id: 2,
     bg: '#f0f4f8',
-    bgImage: 'https://ostcara.com.ar/wp-content/uploads/2019/12/SLIDE1-OST.jpg',
+    bgImage: slide2Afiliate,
     titleLines: ['AFILIATE A', 'OSTCARA'],
     subtitle: 'Una obra social pensada para vos',
     buttonText: 'Ver requisitos',
@@ -33,7 +35,7 @@ const SLIDES = [
   {
     id: 3,
     bg: '#eef6f7',
-    bgImage: 'https://ostcara.com.ar/wp-content/uploads/2019/12/SLIDE2-OST.jpg',
+    bgImage: slide3Delegacion,
     titleLines: ['ENCONTRÁ TU', 'DELEGACIÓN', 'MÁS CERCANA'],
     subtitle: 'OSTCARA está siempre cerca tuyo',
     buttonText: 'Ver delegaciones',
