@@ -318,7 +318,7 @@ export default function Coseguros() {
             onClick={() => setHistorialAbierto(true)}
             className="flex items-center gap-1.5 text-xs font-bold text-[#3dc2c6] hover:text-[#2ba9ad] transition-colors"
           >
-            Ver histórico
+            Ver otras vigencias
             <i className="fas fa-history"></i>
           </button>
         </div>
@@ -352,7 +352,7 @@ export default function Coseguros() {
           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = '#3dc2c6' }}
         >
           <i className="fas fa-history"></i>
-          Ver histórico de precios de coseguros
+          Ver otras vigencias de precios de coseguros
         </button>
 
         <p>
