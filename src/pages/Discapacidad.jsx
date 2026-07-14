@@ -2,43 +2,44 @@ import PageLayout from '../components/PageLayout'
 
 const DOCS = [
   {
-    label: 'Cómo acceder a las prestaciones',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/ACCESO-A-PRESTACIONES-DISCAPACIDAD.pdf',
+    label: 'Requerimientos discapacidad',
+    file: '1-REQUERIMIENTOS DISCAPACIDAD.pdf',
   },
   {
-    label: 'Documentación a presentar — Requerimientos',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/REQUERIMIENTOS-DISCAPACIDAD.pdf',
+    label: 'Resumen de historia clínica',
+    file: '2-RESUMEN DE HISTORIA CLÍNICA.pdf',
   },
   {
-    label: 'Formulario resumen de historia clínica',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/RESUMEN-DE-HISTORIA-CLINICA.pdf',
+    label: 'Planilla independencia funcional',
+    file: '3-PLANILLA FIM.pdf',
   },
   {
-    label: 'Formulario de independencia funcional (FIM)',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/PLANILLA-FIM.pdf',
+    label: 'Formulario de conformidad prestación rehabilitación-instituciones',
+    file: '6-CONFORMIDAD PRESTACIONAL REHABILITACION-INSTITUCIONES.pdf',
+  },
+  // Falta el PDF "7-CONFORMIDAD PRESTACIONAL TRANSPORTE" en public/disc — agregar cuando esté disponible.
+  {
+    label: 'Formulario de pedido médico de transporte y presupuesto',
+    file: '5-PEDIDO MEDICO DE TRANSPORTE y PRESUPUESTO.pdf',
   },
   {
-    label: 'Formulario conformidad prestación',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/CONFORMIDAD-PRESTACIONAL-REHABILITACION-INSTITUCIONES-.pdf',
+    label: 'Formulario de pedido médico de rehabilitaciones - instituciones y presupuesto',
+    file: '4-PEDIDO MEDICO DE REHABILITACIONES- INSTITUCIONES Y PRESUPUESTO.pdf',
   },
   {
-    label: 'Requisitos para transporte',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/REQUISTIOS-PARA-TRANSPORTE-.pdf',
+    label: 'Planillas de asistencia',
+    file: '8-PLANILLAS DE ASISTENCIA.pdf',
   },
   {
-    label: 'Solicitud de transporte y presupuesto',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/SOLICITUD-TRANSPORTE-y-PRESUPUESTO.pdf',
-  },
-  {
-    label: 'Solicitud de rehabilitaciones y presupuesto',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2025/10/SOLICITUD-DE-REHABILITACIONES-Y-PRESUPUESTO.pdf',
+    label: 'Usuario SAAS',
+    file: '9-USUARIO SAAS.pdf',
   },
 ]
 
-function DocLink({ label, href }) {
+function DocLink({ label, file }) {
   return (
     <a
-      href={href}
+      href={encodeURI(`/disc/${file}`)}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-3 p-4 border border-gray-200 hover:border-[#3ec6f5] hover:bg-[#f0fbff] transition-colors group"
@@ -64,7 +65,7 @@ export default function Discapacidad() {
       </p>
       <div className="space-y-3">
         {DOCS.map((doc) => (
-          <DocLink key={doc.href} {...doc} />
+          <DocLink key={doc.file} {...doc} />
         ))}
       </div>
     </PageLayout>
