@@ -17,7 +17,10 @@ const DOCS = [
     label: 'Formulario de conformidad prestación rehabilitación-instituciones',
     file: '6-CONFORMIDAD PRESTACIONAL REHABILITACION-INSTITUCIONES.pdf',
   },
-  // Falta el PDF "7-CONFORMIDAD PRESTACIONAL TRANSPORTE" en public/disc — agregar cuando esté disponible.
+  {
+    label: 'Formulario de conformidad prestación transporte',
+    file: '7-CONFORMIDAD PRESTACIONAL TRANSPORTE.pdf',
+  },
   {
     label: 'Formulario de pedido médico de transporte y presupuesto',
     file: '5-PEDIDO MEDICO DE TRANSPORTE y PRESUPUESTO.pdf',
