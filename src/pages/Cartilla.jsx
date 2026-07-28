@@ -5,23 +5,29 @@ import PageLayout from '../components/PageLayout'
 const ITEMS = [
   {
     label: 'Resolución SSS — Aprobación 2026–2027',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2026/06/APROBACION-CARTILLA-2026-2027.pdf',
+    href: '/cart/APROBACION-CARTILLA-2026-2027.pdf',
   },
   {
     label: 'Cobertura médica: Anexo I',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2026/06/ANEXO-I-2026-2027.pdf',
+    href: '/cart/ANEXO-I-2026-2027.pdf',
   },
   {
     label: 'Cobertura médica: Anexo II',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2026/06/ANEXO-II-2026-2027.pdf',
+    href: '/cart/ANEXO-II-2026-2027.pdf',
+  },
+  {
+    label: 'Cobertura médica: Anexo III',
+    href: '/cart/ANEXO-III-2026-2027.xlsx',
+    icon: 'fa-file-excel',
+    iconColor: 'text-green-600',
   },
   {
     label: 'Cobertura médica: Anexo IV',
-    href: 'https://ostcara.com.ar/wp-content/uploads/2026/06/ANEXO-IV-2026-2027.pdf',
+    href: '/cart/ANEXO-IV-2026-2027.pdf',
   },
 ]
 
-function DocLink({ label, href }) {
+function DocLink({ label, href, icon = 'fa-file-pdf', iconColor = 'text-red-400' }) {
   return (
     <a
       href={href}
@@ -29,7 +35,7 @@ function DocLink({ label, href }) {
       rel="noopener noreferrer"
       className="flex items-center gap-3 p-4 border border-gray-200 hover:border-[#3ec6f5] hover:bg-[#f0fbff] transition-colors group"
     >
-      <i className="fas fa-file-pdf text-2xl text-red-400 shrink-0"></i>
+      <i className={`fas ${icon} text-2xl ${iconColor} shrink-0`}></i>
       <span className="text-sm text-[#444] group-hover:text-[#3ec6f5] font-medium" style={{ fontFamily: "'Open Sans', sans-serif" }}>
         {label}
       </span>
