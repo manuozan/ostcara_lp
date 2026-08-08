@@ -1,5 +1,83 @@
 import { useState, useRef, useEffect } from 'react'
 import caraAvatar from '../assets/cara.png'
+import {
+  formatVigenciaLabel,
+  getGrupoLineas,
+  getProximaVigencia,
+  getVigenciaActual,
+} from '../data/coseguros'
+
+// ── Coseguros ─────────────────────────────────────────────────────────────────
+// Los nodos de coseguros se generan a partir de src/data/coseguros.js, la misma
+// fuente que usa la página /coseguros: al cargar una vigencia nueva en los JSON
+// el asistente se actualiza solo, sin tocar este archivo.
+
+const COSEGUROS_PLANES = [
+  { key: 'dependencia', dataKey: 'dependencia', nombre: 'Relación de Dependencia' },
+  { key: 'monotributo', dataKey: 'monotributo', nombre: 'Monotributo / Monotributo Social / Servicio Doméstico' },
+]
+
+// `grupo` referencia el titulo en GRUPOS_CONFIG; `menuLabel` y `titulo` son los textos del chat
+const COSEGUROS_SECCIONES = [
+  { slug: 'consultas', menuLabel: 'Consultas', titulo: 'Consultas', grupo: 'Consultas' },
+  { slug: 'psicologia', menuLabel: 'Psicología', titulo: 'Psicología', grupo: 'Psicología' },
+  { slug: 'laboratorio', menuLabel: 'Laboratorio', titulo: 'Prácticas de laboratorio', grupo: 'Prácticas de laboratorio' },
+  { slug: 'diagnosticas', menuLabel: 'Diagnósticas y terapéuticas', titulo: 'Prácticas diagnósticas y terapéuticas', grupo: 'Prácticas diagnósticas y terapéuticas' },
+  { slug: 'kinesio', menuLabel: 'Kinesiología y fisiatría', titulo: 'Kinesiología y fisiatría', grupo: 'Prácticas kinesiológicas y fisiátricas' },
+  { slug: 'fono', menuLabel: 'Fonoaudiología', titulo: 'Fonoaudiología', grupo: 'Fonoaudiología' },
+  { slug: 'domiciliaria', menuLabel: 'Atención domiciliaria', titulo: 'Atención domiciliaria', grupo: 'Atención domiciliaria — Consultas' },
+  { slug: 'odontologia', menuLabel: 'Odontología', titulo: 'Odontología', grupo: 'Odontología' },
+  { slug: 'integral', menuLabel: 'Atención integral (por ley)', titulo: 'Atención integral (coberturas por ley)', grupo: 'Atención integral (coberturas por ley)' },
+]
+
+const NOTA_OTRAS_VIGENCIAS =
+  '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y tocá **"Ver otras vigencias"** para consultar meses anteriores o el próximo.'
+
+function buildCosegurosFlows() {
+  const flows = {}
+
+  for (const plan of COSEGUROS_PLANES) {
+    const menuKey = `coseguros_${plan.key}_menu`
+    const vigencia = getVigenciaActual(plan.dataKey)
+    const proxima = getProximaVigencia(plan.dataKey, vigencia)
+
+    flows[menuKey] = {
+      messages: [
+        `**Coseguros — ${plan.nombre}** (vigencia ${formatVigenciaLabel(vigencia)})\n¿Qué práctica querés consultar?`,
+      ],
+      options: [
+        ...COSEGUROS_SECCIONES.map((s) => ({ label: s.menuLabel, next: `coseguros_${plan.key}_${s.slug}` })),
+        { label: '← Volver al inicio', next: 'welcome' },
+      ],
+      back: 'coseguros_info',
+    }
+
+    for (const seccion of COSEGUROS_SECCIONES) {
+      const messages = [
+        `**${seccion.titulo} — ${plan.nombre}:**`,
+        getGrupoLineas(plan.dataKey, seccion.grupo, vigencia),
+      ]
+      // Difusión anticipada: si ya está cargada la vigencia siguiente, se informa junto con la actual
+      if (proxima) {
+        messages.push(
+          `📅 **Desde ${formatVigenciaLabel(proxima)}** estos valores pasan a ser:\n${getGrupoLineas(plan.dataKey, seccion.grupo, proxima)}`
+        )
+      }
+      messages.push(NOTA_OTRAS_VIGENCIAS)
+
+      flows[`coseguros_${plan.key}_${seccion.slug}`] = {
+        messages,
+        options: [
+          { label: 'Ver otra práctica', next: menuKey },
+          { label: '← Volver al inicio', next: 'welcome' },
+        ],
+        back: menuKey,
+      }
+    }
+  }
+
+  return flows
+}
 
 // ── Knowledge base ─────────────────────────────────────────────────────────────
 
@@ -401,257 +479,7 @@ const FLOWS = {
     back: 'welcome',
   },
 
-  // Relación de dependencia
-  coseguros_dependencia_menu: {
-    messages: ['**Coseguros — Relación de Dependencia** (vigencia Julio 2026)\n¿Qué práctica querés consultar?'],
-    options: [
-      { label: 'Consultas', next: 'coseguros_dependencia_consultas' },
-      { label: 'Psicología', next: 'coseguros_dependencia_psicologia' },
-      { label: 'Laboratorio', next: 'coseguros_dependencia_laboratorio' },
-      { label: 'Diagnósticas y terapéuticas', next: 'coseguros_dependencia_diagnosticas' },
-      { label: 'Kinesiología y fisiatría', next: 'coseguros_dependencia_kinesio' },
-      { label: 'Fonoaudiología', next: 'coseguros_dependencia_fono' },
-      { label: 'Atención domiciliaria', next: 'coseguros_dependencia_domiciliaria' },
-      { label: 'Odontología', next: 'coseguros_dependencia_odontologia' },
-      { label: 'Atención integral (por ley)', next: 'coseguros_dependencia_integral' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_info',
-  },
-  coseguros_dependencia_consultas: {
-    messages: [
-      '**Consultas — Relación de Dependencia:**',
-      '• Médico de familia, generalista, pediatras, tocoginecólogo — $9.521,70\n• Médicos especialistas — $16.498,50\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_psicologia: {
-    messages: [
-      '**Psicología — Relación de Dependencia:**',
-      '• Sesión incluida — $13.622,10\n• Sesión excedente — $25.923,30',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_laboratorio: {
-    messages: [
-      '**Prácticas de laboratorio — Relación de Dependencia:**',
-      '• Hasta 6 determinaciones básicas — $6.222\n• Valor extra por prestación adicional a las 6 definidas — $2.636,70',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_diagnosticas: {
-    messages: [
-      '**Prácticas diagnósticas y terapéuticas — Relación de Dependencia:**',
-      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $6.222\n• Mediana complejidad — $11.862,60\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $28.050',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_kinesio: {
-    messages: [
-      '**Kinesiología y fisiatría — Relación de Dependencia:**',
-      '• Por sesión — $6.446,40\n• Por sesión excedente — $1.383,12\n• Prácticas de enfermería — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_fono: {
-    messages: [
-      '**Fonoaudiología — Relación de Dependencia:**',
-      '• Por sesión de fonoaudiología y foniatría — $6.222',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_domiciliaria: {
-    messages: [
-      '**Atención domiciliaria — Relación de Dependencia:**',
-      '• Diurna (código verde) — $27.534,90\n• Nocturna (código verde) — $43.278,60\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $1.528,47',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_odontologia: {
-    messages: [
-      '**Odontología — Relación de Dependencia:**',
-      '• Consultas — $12.036\n• Consultas para menores de 15 años y mayores de 65 años — $6.222\n• Prácticas odontológicas — $12.036',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-  coseguros_dependencia_integral: {
-    messages: [
-      '**Atención integral (coberturas por ley) — Relación de Dependencia:**',
-      '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_dependencia_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_dependencia_menu',
-  },
-
-  // Monotributo / Monotributo social / Servicio doméstico
-  coseguros_monotributo_menu: {
-    messages: ['**Coseguros — Monotributo / Monotributo Social / Servicio Doméstico** (vigencia Julio 2026)\n¿Qué práctica querés consultar?'],
-    options: [
-      { label: 'Consultas', next: 'coseguros_monotributo_consultas' },
-      { label: 'Psicología', next: 'coseguros_monotributo_psicologia' },
-      { label: 'Laboratorio', next: 'coseguros_monotributo_laboratorio' },
-      { label: 'Diagnósticas y terapéuticas', next: 'coseguros_monotributo_diagnosticas' },
-      { label: 'Kinesiología y fisiatría', next: 'coseguros_monotributo_kinesio' },
-      { label: 'Fonoaudiología', next: 'coseguros_monotributo_fono' },
-      { label: 'Atención domiciliaria', next: 'coseguros_monotributo_domiciliaria' },
-      { label: 'Odontología', next: 'coseguros_monotributo_odontologia' },
-      { label: 'Atención integral (por ley)', next: 'coseguros_monotributo_integral' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_info',
-  },
-  coseguros_monotributo_consultas: {
-    messages: [
-      '**Consultas — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Médico de familia, generalista, pediatras, tocoginecólogo — $24.280\n• Médicos especialistas — $36.540\n• Programa HIV y Oncología — EXENTO\n• Oncología — EXENTO\n• Discapacidad — EXENTO\n• Plan Materno Infantil — EXENTO\n• Programas Preventivos — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_psicologia: {
-    messages: [
-      '**Psicología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Sesión incluida — $24.280\n• Sesión excedente — $36.545',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_laboratorio: {
-    messages: [
-      '**Prácticas de laboratorio — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Hasta 6 determinaciones básicas — $14.625\n• Valor extra por prestación adicional a las 6 definidas — $5.987',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_diagnosticas: {
-    messages: [
-      '**Prácticas diagnósticas y terapéuticas — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Imágenes de baja complejidad (RX simple y ecografía simple) — $14.625\n• Mediana complejidad — $23.140\n• Alta complejidad (TAC, RMN, RIE, laboratorio biomolecular/genético, medicina nuclear, endoscopía) — $59.700,60',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_kinesio: {
-    messages: [
-      '**Kinesiología y fisiatría — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Por sesión — $14.625\n• Por sesión excedente — $21.496,50\n• Prácticas de enfermería — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_fono: {
-    messages: [
-      '**Fonoaudiología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Por sesión de fonoaudiología y foniatría — $14.625',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_domiciliaria: {
-    messages: [
-      '**Atención domiciliaria — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Diurna (código verde) — $59.700,60\n• Nocturna (código verde) — $119.406,30\n• Emergencias (código rojo) — EXENTO\n• Mayores de 65 años — $36.540',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_odontologia: {
-    messages: [
-      '**Odontología — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Consultas — $23.138\n• Consultas para menores de 15 años y mayores de 65 años — $17.057\n• Prácticas odontológicas — $23.140',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
-  coseguros_monotributo_integral: {
-    messages: [
-      '**Atención integral (coberturas por ley) — Monotributo / Monotributo Social / Servicio Doméstico:**',
-      '• Atención y cuidado integral durante embarazo y 1ra infancia (Ley 27.611) — EXENTO\n• Respuesta integral al HIV, Hepatitis, ITS y tuberculosis (Ley 25.675) — EXENTO\n• Protección integral para personas trasplantadas (Ley 26.928) — EXENTO\n• Trasplante de órganos, tejidos y células (Ley 27.447) — EXENTO',
-      '📌 ¿Buscás valores de otro mes? Entrá a la sección **COSEGUROS** del sitio (/coseguros) y presioná el botón **"Ver histórico"** para consultar meses anteriores o el próximo mes.',
-    ],
-    options: [
-      { label: 'Ver otra práctica', next: 'coseguros_monotributo_menu' },
-      { label: '← Volver al inicio', next: 'welcome' },
-    ],
-    back: 'coseguros_monotributo_menu',
-  },
+  ...buildCosegurosFlows(),
 
   // ── CONTACTO ─────────────────────────────────────────────────────────────────
   contacto_info: {
