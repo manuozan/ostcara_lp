@@ -561,6 +561,42 @@
       },
       "_vigencia_original": "SEPTIEMBRE 2026",
       "_nota": "Fuente indica 'Fonoaudiologia y Foniatria' = 15.360,00, distinto de laboratorio/kinesio/diagnostica baja complejidad que estan en 15.450,00 (mismo desfasaje que en la planilla de agosto)"
+    },
+    "2026-10": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 26530.00,
+        "medicos_especialistas": 39875.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 26530.00, "sesion_excedente": 39875.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 16068.00, "valor_extra_prestacion_adicional": 6540.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 16068.00,
+        "mediana_complejidad": 25280.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 66534.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 16068.00, "por_sesion_excedente": 23960.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 15975.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 66534.00,
+        "nocturna_codigo_verde": 133068.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 39925.00
+      },
+      "odontologia": { "consultas": 25280.00, "consultas_menores_15_mayores_65": 18630.00, "practicas_odontologicas": 25280.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "OCTUBRE 2026",
+      "_nota": "Fuente indica 'Fonoaudiologia y Foniatria' = 15.975,00, distinto de laboratorio/kinesio/diagnostica baja complejidad que estan en 16.068,00 (mismo desfasaje que en las planillas de agosto y septiembre)"
     }
   }
 }

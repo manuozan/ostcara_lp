@@ -557,6 +557,42 @@
         "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
       },
       "_vigencia_original": "SEPTIEMBRE 2026"
+    },
+    "2026-10": {
+      "consultas": {
+        "medico_familia_generalista_pediatras_tocoginecologo": 10400.00,
+        "medicos_especialistas": 18026.00,
+        "programa_hiv_oncologia": "EXENTO",
+        "oncologia": "EXENTO",
+        "discapacidad": "EXENTO",
+        "plan_materno_infantil": "EXENTO",
+        "programas_preventivos": "EXENTO"
+      },
+      "psicologia": { "sesion_incluida": 14880.00, "sesion_excedente": 28325.00 },
+      "practicas_laboratorio": { "hasta_6_determinaciones_basicas": 6800.00, "valor_extra_prestacion_adicional": 2880.00 },
+      "practicas_diagnosticas_terapeuticas": {
+        "baja_complejidad_rx_simple_ecografia_simple": 6800.00,
+        "mediana_complejidad": 12960.00,
+        "alta_complejidad_tac_rmn_rie_lab_biomolecular_genetico_medicina_nuclear_endoscopia": 30650.00
+      },
+      "practicas_kinesio_fisiatras": { "por_sesion": 7050.00, "por_sesion_excedente": 1511.00 },
+      "practicas_enfermeria": "EXENTO",
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 6800.00 },
+      "atencion_domiciliaria_consultas": {
+        "diurna_codigo_verde": 30090.00,
+        "nocturna_codigo_verde": 47290.00,
+        "emergencias_codigo_rojo": "EXENTO",
+        "mayores_65_anos": 1670.00
+      },
+      "odontologia": { "consultas": 13150.00, "consultas_menores_15_mayores_65": 6780.00, "practicas_odontologicas": 13150.00 },
+      "atencion_integral": {
+        "embarazo_1ra_infancia_ley_27611": "EXENTO",
+        "hiv_hepatitis_its_tuberculosis_ley_25675": "EXENTO",
+        "trasplantados_ley_26928": "EXENTO",
+        "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
+      },
+      "_vigencia_original": "OCTUBRE 2026",
+      "_nota": "PENDIENTE DE CONFIRMACION: la planilla de octubre indica Fonoaudiologia y Foniatria = 67.800,00 (+937% vs septiembre y mas caro que alta complejidad). Se carga 6.800,00 por ser el valor coherente con el historico (fono siempre igualo a laboratorio hasta 6 determinaciones) y con el ajuste del 4% del resto de la tabla."
     }
   }
 }
