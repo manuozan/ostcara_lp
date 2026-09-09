@@ -9,8 +9,8 @@ export const DELEGACIONES = [
   {
     nombre: 'AMBA — Área Metropolitana Bs As',
     provincia: 'Buenos Aires',
-    responsable: 'Maria Laura Varela',
-    telefono: '(011) 7172-2502',
+    responsable: 'Carolina Carrizo',
+    telefono: '(011) 7172-2501 / (011) 3489-2502',
     direccion: 'Montevideo 589 7º A',
     email: 'amba@ostcara.org.ar',
     lat: -34.6086,
@@ -39,8 +39,8 @@ export const DELEGACIONES = [
   {
     nombre: 'La Plata',
     provincia: 'Buenos Aires',
-    responsable: 'Ramiro Rio',
-    telefono: '(0221) 594-2532-2601',
+    responsable: 'Enzo Mora',
+    telefono: '(0221) 594-1120 / (0221) 452-1554',
     direccion: 'Calle 53 E 28 y 29 N° 1674',
     email: 'delegacionlaplata@ostcara.org.ar',
     lat: -34.9204948,
