@@ -577,7 +577,7 @@
       },
       "practicas_kinesio_fisiatras": { "por_sesion": 7050.00, "por_sesion_excedente": 1511.00 },
       "practicas_enfermeria": "EXENTO",
-      "practicas_fonoaudiologia_foniatria": { "por_sesion": 6800.00 },
+      "practicas_fonoaudiologia_foniatria": { "por_sesion": 6780.00 },
       "atencion_domiciliaria_consultas": {
         "diurna_codigo_verde": 30090.00,
         "nocturna_codigo_verde": 47290.00,
@@ -591,8 +591,7 @@
         "trasplantados_ley_26928": "EXENTO",
         "trasplante_organos_tejidos_celulas_ley_27447": "EXENTO"
       },
-      "_vigencia_original": "OCTUBRE 2026",
-      "_nota": "PENDIENTE DE CONFIRMACION: la planilla de octubre indica Fonoaudiologia y Foniatria = 67.800,00 (+937% vs septiembre y mas caro que alta complejidad). Se carga 6.800,00 por ser el valor coherente con el historico (fono siempre igualo a laboratorio hasta 6 determinaciones) y con el ajuste del 4% del resto de la tabla."
+      "_vigencia_original": "OCTUBRE 2026"
     }
   }
 }
