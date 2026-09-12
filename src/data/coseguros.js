@@ -1,11 +1,61 @@
+import { useEffect, useState } from 'react'
 import dependenciaData from '../assets/coseguros_ostcara_relacion_dependencia.json'
 import monotributoData from '../assets/coseguros_ostcara_monotributo.json'
 
 // Fuente unica de coseguros: la usan tanto la pagina /coseguros como el asistente BOTSCARA,
 // para que nunca queden desfasados entre si al cargar una vigencia nueva.
+//
+// Los JSON del repo son el respaldo. Si está configurada VITE_COSEGUROS_API_URL, al abrir
+// el sitio se traen los valores del ERP (Portal Web -> Coseguros) y reemplazan a los del
+// bundle: así una vigencia nueva se publica desde el ERP sin tocar este repo ni deployar.
+// Si la API no responde, el sitio sigue mostrando lo que trae compilado.
 export const DATASETS = {
   dependencia: dependenciaData,
   monotributo: monotributoData,
+}
+
+const API_URL = import.meta.env.VITE_COSEGUROS_API_URL
+
+// Cambia cada vez que DATASETS se reemplaza con datos remotos: quien cachee algo derivado
+// de los datos (el asistente arma sus flujos una sola vez) compara contra esto.
+let version = 0
+export const versionDatasets = () => version
+
+let carga = null
+
+// Una sola carga por visita, compartida entre la página y el asistente.
+export function cargarCosegurosRemotos() {
+  if (!API_URL) return Promise.resolve(false)
+  if (!carga) {
+    carga = fetch(API_URL)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(`HTTP ${r.status}`))))
+      .then((remoto) => {
+        let cambio = false
+        for (const key of Object.keys(DATASETS)) {
+          const plan = remoto?.[key]
+          if (plan?.vigencias && Object.keys(plan.vigencias).length) {
+            DATASETS[key] = plan
+            cambio = true
+          }
+        }
+        if (cambio) version += 1
+        return cambio
+      })
+      .catch(() => false)
+  }
+  return carga
+}
+
+// Dispara la carga remota y fuerza un re-render cuando llegan datos nuevos.
+// Devuelve true una vez que DATASETS ya tiene los valores del ERP.
+export function useCosegurosRemotos() {
+  const [listo, setListo] = useState(false)
+  useEffect(() => {
+    let activo = true
+    cargarCosegurosRemotos().then((cambio) => { if (activo && cambio) setListo(true) })
+    return () => { activo = false }
+  }, [])
+  return listo
 }
 
 // Estructura de las tablas: mapea cada práctica al campo correspondiente dentro del JSON de vigencia

@@ -5,12 +5,14 @@ import {
   getGrupoLineas,
   getProximaVigencia,
   getVigenciaActual,
+  useCosegurosRemotos,
+  versionDatasets,
 } from '../data/coseguros'
 
 // ── Coseguros ─────────────────────────────────────────────────────────────────
 // Los nodos de coseguros se generan a partir de src/data/coseguros.js, la misma
-// fuente que usa la página /coseguros: al cargar una vigencia nueva en los JSON
-// el asistente se actualiza solo, sin tocar este archivo.
+// fuente que usa la página /coseguros: al cargar una vigencia nueva (desde el ERP o
+// en los JSON) el asistente se actualiza solo, sin tocar este archivo.
 
 const COSEGUROS_PLANES = [
   { key: 'dependencia', dataKey: 'dependencia', nombre: 'Relación de Dependencia' },
@@ -77,6 +79,18 @@ function buildCosegurosFlows() {
   }
 
   return flows
+}
+
+// Los flujos de coseguros se arman aparte y se rearman cuando DATASETS cambia
+// (llegaron los valores del ERP): FLOWS queda estático.
+let cosegurosFlows = null
+let cosegurosVersion = -1
+function getFlow(key) {
+  if (cosegurosVersion !== versionDatasets()) {
+    cosegurosFlows = buildCosegurosFlows()
+    cosegurosVersion = versionDatasets()
+  }
+  return FLOWS[key] ?? cosegurosFlows[key]
 }
 
 // ── Knowledge base ─────────────────────────────────────────────────────────────
@@ -479,7 +493,6 @@ const FLOWS = {
     back: 'welcome',
   },
 
-  ...buildCosegurosFlows(),
 
   // ── CONTACTO ─────────────────────────────────────────────────────────────────
   contacto_info: {
@@ -544,6 +557,8 @@ function BubbleText({ text }) {
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function CaraAssistant() {
+  // Con los datos del ERP cargados, el próximo getFlow rearma los nodos de coseguros.
+  useCosegurosRemotos()
   const [open, setOpen] = useState(false)
   const [currentFlow, setCurrentFlow] = useState('welcome')
   const [history, setHistory] = useState([])
@@ -563,7 +578,7 @@ export default function CaraAssistant() {
 
   // Push messages from a flow with a typing delay
   const playFlow = (flowKey, userLabel = null) => {
-    const flow = FLOWS[flowKey]
+    const flow = getFlow(flowKey)
     if (!flow) return
     setCurrentFlow(flowKey)
 
@@ -617,7 +632,7 @@ export default function CaraAssistant() {
     }, 50)
   }
 
-  const flow = FLOWS[currentFlow]
+  const flow = getFlow(currentFlow)
   const showOptions = !typing && flow?.options?.length > 0
 
   return (
