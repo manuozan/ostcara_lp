@@ -8,7 +8,6 @@ import {
   getMonthKey,
   getProximaVigencia,
   pickDefaultVigencia,
-  useCosegurosRemotos,
 } from '../data/coseguros'
 
 const CATEGORIAS = [
@@ -140,8 +139,6 @@ function HistorialModal({ meses, vigenciaActiva, vigenciaActual, onSelect, onClo
 }
 
 export default function Coseguros() {
-  // Al llegar los valores del ERP, DATASETS cambia y el componente se vuelve a renderizar con ellos.
-  useCosegurosRemotos()
   const [activeTab, setActiveTab] = useState(CATEGORIAS[1].key)
   const [vigenciaOverride, setVigenciaOverride] = useState({})
   const [historialAbierto, setHistorialAbierto] = useState(false)
